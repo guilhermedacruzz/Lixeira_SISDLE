@@ -3,6 +3,7 @@
 
 // Prótótipos
 bool hasDataStored();
+void limparNVS();
 
 // Extensões
 extern Preferences preferences;
@@ -16,6 +17,12 @@ bool hasDataStored() {
   preferences.end();
 
   return !ssid.compareTo("") == 0;
+}
+
+void limparNVS() {
+  preferences.begin("sisdle", false);
+  preferences.clear();
+  preferences.end();
 }
 
 #endif

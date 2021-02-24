@@ -11,6 +11,7 @@ extern void startButton();
 extern bool checkButton();
 // nvs.h
 extern bool hasDataStored();
+extern void limparNVS();
 
 // Pinos
 const int button_pin = 13;
