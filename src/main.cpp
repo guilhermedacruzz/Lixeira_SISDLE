@@ -1,8 +1,13 @@
+// Importes
 #include <Arduino.h>
 #include "components/button.h"
 
-const int button_pin = 13;
+// Protótipos de Função 
+extern void startButton();
+extern bool checkButton();
 
+// Pinos
+const int button_pin = 13;
 
 void setup() {
   Serial.begin(115200);
