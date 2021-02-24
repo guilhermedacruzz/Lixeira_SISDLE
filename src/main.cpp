@@ -1,7 +1,11 @@
 // Importes
 #include <Arduino.h>
+#include <WiFi.h>
+#include <WiFiAP.h>
+#include <WebSocketServer.h>
 #include <Preferences.h>
 #include <ArduinoJson.h>
+#include "modes/configdata.h"
 #include "components/button.h"
 #include "components/json.h"
 #include "entities/data.h"
@@ -23,11 +27,17 @@ extern void deserializeDataJson(String dados_recebidos);
 // Pinos
 const int button_pin = 13;
 
+// Dados Rede Modo AP
+const char* assid = "Teste12345";
+const char* asecret = "12345678";
+
 // Dados de Configuração da Placa
 Data dados_config;
 
 // Objetos
 Preferences preferences;
+WiFiServer server;
+WebSocketServer webSocketServer;
 
 // O setup roda apenas uma vez quando o programa inicia, parecido com o construtor em java...
 void setup() {
