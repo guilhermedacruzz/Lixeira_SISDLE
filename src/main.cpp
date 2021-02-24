@@ -29,8 +29,16 @@ void setup() {
 
   startButton();
 
-  bool nvs = hasDataStored();
-  Serial.println(nvs);
+  limparNVS();
+  Serial.println(hasDataStored());
+  dados_config.ssid = "ssid";
+  dados_config.password = "password";
+  escreverNVS();
+  Serial.println(hasDataStored());
+  carregarInfoNVS();
+  Serial.println(dados_config.ssid);
+  Serial.println(dados_config.password);
+
 }
 
 void loop() {
