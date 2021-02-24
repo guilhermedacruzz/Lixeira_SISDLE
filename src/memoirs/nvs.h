@@ -12,7 +12,7 @@ extern Preferences preferences;
 extern Data data_config;
 
 // Verifica se existe alguma configuração salva na lixeira
-bool hasDataStored() {
+bool hasDataStoredNVS() {
   preferences.begin("sisdle", false);
 
   String ssid = preferences.getString("ssid");

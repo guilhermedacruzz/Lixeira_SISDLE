@@ -49,10 +49,16 @@ void setup() {
 
   startButton();  
 
+  clearNVS();
+  bool nvs = hasDataStoredNVS();
+
+  if(!nvs)
+    configServerApSta();
+
 }
 
 //Após sair do setup ele vai ficar executando o código dentro do loop até
 //fechar o programa.
 void loop() {
-
+  serverEscutarCliente();
 }

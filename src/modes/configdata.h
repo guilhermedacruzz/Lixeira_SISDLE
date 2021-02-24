@@ -42,8 +42,7 @@ void serverEscutarCliente() {
       if(data.length() > 0) {
         Serial.println(data);
         deserializeDataJson(data);
-        //String z = verificarInfo(obj);
-        webSocketServer.sendData("OK");
+        webSocketServer.sendData(verificarInfo());
       }
     
       delay(10);
