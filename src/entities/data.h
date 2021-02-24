@@ -3,8 +3,8 @@
 
 typedef struct data
 {
-    char* ssid;
-    char* password;
+    String ssid;
+    String password;
 } Data;
 
 #endif
