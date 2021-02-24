@@ -24,23 +24,16 @@ Data dados_config;
 // Objetos
 Preferences preferences;
 
+// O setup roda apenas uma vez quando o programa inicia, parecido com o construtor em java...
 void setup() {
   Serial.begin(115200);
 
   startButton();
 
-  limparNVS();
-  Serial.println(hasDataStored());
-  dados_config.ssid = "ssid";
-  dados_config.password = "password";
-  escreverNVS();
-  Serial.println(hasDataStored());
-  carregarInfoNVS();
-  Serial.println(dados_config.ssid);
-  Serial.println(dados_config.password);
-
 }
 
+//Após sair do setup ele vai ficar executando o código dentro do loop até
+//fechar o programa.
 void loop() {
 
 }

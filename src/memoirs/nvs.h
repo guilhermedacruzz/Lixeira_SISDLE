@@ -22,12 +22,14 @@ bool hasDataStored() {
   return !ssid.compareTo("") == 0;
 }
 
+// Limpa os dados da NVS
 void limparNVS() {
   preferences.begin("sisdle", false);
   preferences.clear();
   preferences.end();
 }
 
+// Escreve novas informações na NVS
 void escreverNVS() {
   preferences.begin("sisdle", false);
   preferences.putString("ssid", dados_config.ssid);
@@ -35,6 +37,7 @@ void escreverNVS() {
   preferences.end();
 }
 
+// Lê as informações da NVS
 void carregarInfoNVS() {
 
   preferences.begin("sisdle", false);
