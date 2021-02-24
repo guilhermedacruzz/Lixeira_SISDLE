@@ -1,11 +1,13 @@
 #ifndef _BUTTON_
 #define _BUTTON_
 
-void startButton(const int button_pin) {
+extern const int button_pin;
+
+void startButton() {
     pinMode(button_pin, INPUT_PULLUP);
 }
 
-bool checkButton(const int button_pin) {
+bool checkButton() {
     return digitalRead(button_pin) == LOW;
 }
 

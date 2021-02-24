@@ -7,13 +7,11 @@ const int button_pin = 13;
 void setup() {
   Serial.begin(115200);
 
-  Serial.print("Iniciando o Botão no GPIO ");
-  Serial.println(button_pin);
-  startButton(button_pin);
+  startButton();
 }
 
 void loop() {
   Serial.print("Pressionou?");
-  Serial.println(checkButton(button_pin));
+  Serial.println(checkButton());
   delay(1000);
 }
