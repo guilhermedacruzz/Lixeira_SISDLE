@@ -13,9 +13,13 @@ extern bool checkButton();
 // nvs.h
 extern bool hasDataStored();
 extern void limparNVS();
+extern void escreverNVS();
+extern void carregarInfoNVS();
 
 // Pinos
 const int button_pin = 13;
+
+Data dados_config;
 
 // Objetos
 Preferences preferences;

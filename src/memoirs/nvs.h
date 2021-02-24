@@ -4,9 +4,12 @@
 // Prótótipos
 bool hasDataStored();
 void limparNVS();
+void escreverNVS();
+void carregarInfoNVS();
 
 // Extensões
 extern Preferences preferences;
+extern Data dados_config;
 
 // Verifica se existe alguma configuração salva na lixeira
 bool hasDataStored() {
@@ -25,11 +28,22 @@ void limparNVS() {
   preferences.end();
 }
 
-void escreverNVS(Data* dados_config) {
+void escreverNVS() {
   preferences.begin("sisdle", false);
-  preferences.putString("ssid", dados_config->ssid);
-  preferences.putString("password", dados_config->password);
+  preferences.putString("ssid", dados_config.ssid);
+  preferences.putString("password", dados_config.password);
   preferences.end();
+}
+
+void carregarInfoNVS() {
+
+  preferences.begin("sisdle", false);
+
+  dados_config.ssid = preferences.getString("ssid");
+  dados_config.password = preferences.getString("password");
+
+  preferences.end();
+
 }
 
 #endif
