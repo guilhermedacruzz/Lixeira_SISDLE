@@ -9,7 +9,7 @@ void readNVS();
 
 // Extensões
 extern Preferences preferences;
-extern Data dados_config;
+extern Data data_config;
 
 // Verifica se existe alguma configuração salva na lixeira
 bool hasDataStored() {
@@ -35,8 +35,8 @@ void clearNVS() {
 void writeNVS() {
   preferences.begin("sisdle", false);
 
-  preferences.putString("ssid", dados_config.ssid);
-  preferences.putString("password", dados_config.password);
+  preferences.putString("ssid", data_config.ssid);
+  preferences.putString("password", data_config.password);
 
   preferences.end();
 }
@@ -45,8 +45,8 @@ void writeNVS() {
 void readNVS() {
   preferences.begin("sisdle", false);
 
-  dados_config.ssid = preferences.getString("ssid");
-  dados_config.password = preferences.getString("password");
+  data_config.ssid = preferences.getString("ssid");
+  data_config.password = preferences.getString("password");
 
   preferences.end();
 }

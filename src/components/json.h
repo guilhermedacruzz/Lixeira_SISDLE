@@ -2,7 +2,7 @@
 #define _JSON_
 
 // Extensões
-extern Data dados_config;
+extern Data data_config;
 
 // Protótipos
 void deserializeDataJson(String dados_recebidos);
@@ -18,8 +18,8 @@ void deserializeDataJson(String dados_recebidos) {
   String ssid = obj["ssid"];
   String pass = obj["password"];
 
-  dados_config.ssid = ssid;
-  dados_config.password = pass;
+  data_config.ssid = ssid;
+  data_config.password = pass;
 }
 
 #endif

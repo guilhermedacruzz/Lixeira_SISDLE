@@ -5,10 +5,10 @@
 #include <WebSocketServer.h>
 #include <Preferences.h>
 #include <ArduinoJson.h>
+#include "entities/data.h"
 #include "modes/configdata.h"
 #include "components/button.h"
 #include "components/json.h"
-#include "entities/data.h"
 #include "memoirs/nvs.h"
 
 // Protótipos de Função 
@@ -32,7 +32,7 @@ const char* assid = "Teste12345";
 const char* asecret = "12345678";
 
 // Dados de Configuração da Placa
-Data dados_config;
+Data data_config;
 
 // Objetos
 Preferences preferences;

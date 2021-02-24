@@ -1,10 +1,10 @@
 #ifndef _CONFIGDATA_
 #define _CONFIGDATA_
 
-extern const char* assid = "Teste12345";
-extern const char* asecret = "12345678";
+extern const char* assid;
+extern const char* asecret;
 
-extern Data dados_config;
+extern Data data_config;
 
 extern WiFiServer server;
 extern WebSocketServer webSocketServer;
