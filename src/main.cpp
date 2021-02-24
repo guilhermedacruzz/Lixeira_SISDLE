@@ -1,8 +1,10 @@
 // Importes
 #include <Arduino.h>
 #include <Preferences.h>
+#include <ArduinoJson.h>
 #include "components/button.h"
 #include "entities/data.h"
+#include "entities/json.h"
 #include "memoirs/nvs.h"
 
 // Protótipos de Função 
@@ -11,14 +13,17 @@
 extern void startButton();
 extern bool checkButton();
 // nvs.h
-extern bool hasDataStored();
-extern void limparNVS();
-extern void escreverNVS();
-extern void carregarInfoNVS();
+extern bool hasDataStoredNVS();
+extern void clarNVS();
+extern void writeNVS();
+extern void readNVS();
+// json.h
+extern void deserializeDataJson(String dados_recebidos);
 
 // Pinos
 const int button_pin = 13;
 
+// Dados de Configuração da Placa
 Data dados_config;
 
 // Objetos

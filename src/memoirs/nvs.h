@@ -2,10 +2,10 @@
 #define _NVS_
 
 // Prótótipos
-bool hasDataStored();
-void limparNVS();
-void escreverNVS();
-void carregarInfoNVS();
+bool hasDataStoredNVS();
+void clearNVS();
+void writeNVS();
+void readNVS();
 
 // Extensões
 extern Preferences preferences;
@@ -23,30 +23,32 @@ bool hasDataStored() {
 }
 
 // Limpa os dados da NVS
-void limparNVS() {
+void clearNVS() {
   preferences.begin("sisdle", false);
+
   preferences.clear();
+
   preferences.end();
 }
 
 // Escreve novas informações na NVS
-void escreverNVS() {
+void writeNVS() {
   preferences.begin("sisdle", false);
+
   preferences.putString("ssid", dados_config.ssid);
   preferences.putString("password", dados_config.password);
+
   preferences.end();
 }
 
 // Lê as informações da NVS
-void carregarInfoNVS() {
-
+void readNVS() {
   preferences.begin("sisdle", false);
 
   dados_config.ssid = preferences.getString("ssid");
   dados_config.password = preferences.getString("password");
 
   preferences.end();
-
 }
 
 #endif
