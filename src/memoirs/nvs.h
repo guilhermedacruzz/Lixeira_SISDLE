@@ -12,7 +12,7 @@ extern Preferences preferences;
 bool hasDataStored() {
   preferences.begin("sisdle", false);
 
-  String ssid = preferences.getString("id");
+  String ssid = preferences.getString("ssid");
 
   preferences.end();
 
@@ -22,6 +22,13 @@ bool hasDataStored() {
 void limparNVS() {
   preferences.begin("sisdle", false);
   preferences.clear();
+  preferences.end();
+}
+
+void escreverNVS(Data* dados_config) {
+  preferences.begin("sisdle", false);
+  preferences.putString("ssid", dados_config->ssid);
+  preferences.putString("password", dados_config->password);
   preferences.end();
 }
 

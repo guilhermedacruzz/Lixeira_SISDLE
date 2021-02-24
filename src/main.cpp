@@ -2,6 +2,7 @@
 #include <Arduino.h>
 #include <Preferences.h>
 #include "components/button.h"
+#include "entities/data.h"
 #include "memoirs/nvs.h"
 
 // Protótipos de Função 
