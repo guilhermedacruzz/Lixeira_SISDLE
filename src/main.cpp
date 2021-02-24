@@ -6,9 +6,9 @@
 #include <Preferences.h>
 #include <ArduinoJson.h>
 #include "entities/data.h"
+#include "components/json.h"
 #include "modes/configdata.h"
 #include "components/button.h"
-#include "components/json.h"
 #include "memoirs/nvs.h"
 
 // Protótipos de Função 
@@ -23,6 +23,10 @@ extern void writeNVS();
 extern void readNVS();
 // json.h
 extern void deserializeDataJson(String dados_recebidos);
+// configdata.h
+extern void configServerApSta();
+extern void serverEscutarCliente();
+extern String verificarInfo();
 
 // Pinos
 const int button_pin = 13;
@@ -43,7 +47,7 @@ WebSocketServer webSocketServer;
 void setup() {
   Serial.begin(115200);
 
-  startButton();
+  startButton();  
 
 }
 
