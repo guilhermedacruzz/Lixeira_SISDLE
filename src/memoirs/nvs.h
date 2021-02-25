@@ -15,7 +15,7 @@ extern Data data_config;
 bool hasDataStoredNVS() {
   preferences.begin("sisdle", false);
 
-  String ssid = preferences.getString("ssid");
+  String ssid = preferences.getString("status");
 
   preferences.end();
 
@@ -35,8 +35,16 @@ void clearNVS() {
 void writeNVS() {
   preferences.begin("sisdle", false);
 
-  preferences.putString("ssid", data_config.ssid);
-  preferences.putString("password", data_config.password);
+  String ssid = data_config.ssid;
+  String pass = data_config.password;
+
+
+  Serial.println(ssid);
+  Serial.println(pass);
+
+  preferences.putString("status", "statdus");
+  preferences.putString("id", ssid);
+  preferences.putString("password", pass);
 
   preferences.end();
 }
@@ -45,7 +53,7 @@ void writeNVS() {
 void readNVS() {
   preferences.begin("sisdle", false);
 
-  data_config.ssid = preferences.getString("ssid");
+  data_config.ssid = preferences.getString("id");
   data_config.password = preferences.getString("password");
 
   preferences.end();

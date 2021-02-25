@@ -3,9 +3,10 @@
 
 void configServerApSta();
 void serverEscutarCliente();
-String verificarInfo();
+bool verificarInfo();
 
 extern void deserializeDataJson(String dados_recebidos);
+extern void writeNVS();
 
 extern const char* assid;
 extern const char* asecret;
@@ -16,6 +17,7 @@ extern WiFiServer server;
 extern WebSocketServer webSocketServer;
 
 void configServerApSta() {
+  Serial.println("Iniciando modo de configuração!");
   WiFi.mode(WIFI_AP_STA);
 
   Serial.println("Criando ponto de acesso....");
@@ -27,12 +29,30 @@ void configServerApSta() {
   server.begin();
 }
 
+bool checkData(String data) {
+  deserializeDataJson(data);
+
+  bool status = verificarInfo();
+
+  Serial.println(status);
+  if(status) {
+    webSocketServer.sendData(data);
+  }
+  else {
+    webSocketServer.sendData(data);
+  }
+
+  return status;
+}
+
 
 void serverEscutarCliente() {
   WiFiClient client = server.available();
+  bool iswrite = false;
  
   if (client.connected() && webSocketServer.handshake(client)) {
 
+    Serial.println("Cliente Conectado!");
     String data;
  
     while (client.connected()) {
@@ -40,22 +60,29 @@ void serverEscutarCliente() {
       data = webSocketServer.getData();
 
       if(data.length() > 0) {
+        Serial.println("Dado recebido: ");
         Serial.println(data);
-        deserializeDataJson(data);
-        webSocketServer.sendData(verificarInfo());
+        iswrite = checkData(data);
       }
     
       delay(10);
    }
 
-   Serial.println("The client disconnected");
+   Serial.println("Cliente Desconectado");
    delay(100);
+  }
+
+  if(iswrite) {
+    Serial.println("Escrevendo na NVS...");
+    WiFi.disconnect();
+    writeNVS();
+    ESP.restart();
   }
 }
 
-String verificarInfo() {
+bool verificarInfo() {
 
-  Serial.print("connecting to... ");
+  Serial.print("connectando em... ");
   Serial.println(data_config.ssid);
 
   WiFi.begin(data_config.ssid.c_str(), data_config.password.c_str());
@@ -68,7 +95,7 @@ String verificarInfo() {
     Serial.print(".");
 
     if(cont == MAX)
-      return "Erro";
+      return false;
 
     cont++;
   }
@@ -76,7 +103,7 @@ String verificarInfo() {
   Serial.println("\nÉ possível concectar............");
   WiFi.disconnect();
 
-  return "Ok";
+  return true;
 }
 
 

@@ -26,7 +26,10 @@ extern void deserializeDataJson(String dados_recebidos);
 // configdata.h
 extern void configServerApSta();
 extern void serverEscutarCliente();
-extern String verificarInfo();
+extern bool verificarInfo();
+void a();
+
+typedef void(*pont_func)(void);
 
 // Pinos
 const int button_pin = 13;
@@ -37,6 +40,7 @@ const char* asecret = "12345678";
 
 // Dados de Configuração da Placa
 Data data_config;
+pont_func pt;
 
 // Objetos
 Preferences preferences;
@@ -49,16 +53,33 @@ void setup() {
 
   startButton();  
 
-  clearNVS();
   bool nvs = hasDataStoredNVS();
 
-  if(!nvs)
+  if(!nvs) {
     configServerApSta();
-
+    pt = &serverEscutarCliente;
+  }
+  else {
+    WiFi.mode(WIFI_STA);
+    Serial.println("já tem dados salvos");
+    pt = &a;
+  }
 }
 
 //Após sair do setup ele vai ficar executando o código dentro do loop até
 //fechar o programa.
 void loop() {
-  serverEscutarCliente();
+  
+  pt();
+
+  if(checkButton()) {
+    Serial.println("Resetando....");
+    clearNVS();
+    ESP.restart();
+  }
+}
+
+void a() {
+  Serial.println("Enviando....");
+  delay(1000);
 }
