@@ -13,6 +13,7 @@ void funcLoopEnviarInfo();
 void configStation() {
   readNVS();
   WiFi.mode(WIFI_STA);
+  WiFi.setAutoReconnect (true);
 
   WiFi.begin(data_config.ssid.c_str(), data_config.password.c_str());
 
@@ -27,7 +28,7 @@ void reconnectWiFi() {
     delay(500);
     checkButton();
     Serial.println("Connectando a Rede WiFi..");
-
+    WiFi.reconnect();
   }
 
   Serial.println("Conectado!");

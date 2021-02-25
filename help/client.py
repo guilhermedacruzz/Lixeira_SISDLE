@@ -3,8 +3,8 @@ import time
 import json
 
 dic = {
-    "ssid":"2.4g Adalberto",
-    "password":"qi2001to500"
+    "ssid":"Galaxy A71CA30",
+    "password":"mzlw4323"
 }
  
 ws = websocket.WebSocket()
