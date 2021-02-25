@@ -6,20 +6,20 @@
 #include <Preferences.h>
 #include <ArduinoJson.h>
 #include "entities/data.h"
+#include "memoirs/nvs.h"
 #include "components/json.h"
 #include "modes/modeconfigdata.h"
 #include "modes/modesenddata.h"
 #include "components/button.h"
-#include "memoirs/nvs.h"
 
 // Protótipos de Função 
 
 // button.h
 extern void startButton();
-extern bool checkButton();
+extern void checkButton();
 // nvs.h
 extern bool hasDataStoredNVS();
-extern void clarNVS();
+extern void clearNVS();
 extern void writeNVS();
 extern void readNVS();
 // json.h
@@ -76,10 +76,6 @@ void loop() {
   
   pt();
 
-  if(checkButton()) {
-    Serial.println("Resetando....");
-    clearNVS();
-    WiFi.disconnect();
-    ESP.restart();
-  }
+  checkButton();
+
 }

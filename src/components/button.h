@@ -1,21 +1,28 @@
 #ifndef _BUTTON_
 #define _BUTTON_
 
+extern void clearnVS();
+
 // Protótipos de Função 
 void startButton();
-bool checkButton();
+void checkButton();
 
 // Extensão do pino correspondente do botão
 extern const int button_pin;
 
 // Inicializa o Botão
 void startButton() {
-    pinMode(button_pin, INPUT_PULLUP);
+  pinMode(button_pin, INPUT_PULLUP);
 }
 
 // Verifica o estado do botão
-bool checkButton() {
-    return digitalRead(button_pin) == LOW;
+void checkButton() {
+	if(digitalRead(button_pin) == LOW) {
+		Serial.println("Resetando....");
+		clearNVS();
+		WiFi.disconnect();
+		ESP.restart();
+	}
 }
 
 #endif

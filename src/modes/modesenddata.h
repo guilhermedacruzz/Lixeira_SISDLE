@@ -2,6 +2,7 @@
 #define _MODESENDDATA_
 
 extern void readNVS();
+extern void checkButton();
 
 extern Data data_config;
 
@@ -24,7 +25,7 @@ void reconnectWiFi() {
 
   while (WiFi.status() != WL_CONNECTED) { 
     delay(500);
-    // Lembre de colcoar o botão de reset aqui
+    checkButton();
     Serial.println("Connectando a Rede WiFi..");
 
   }
