@@ -25,8 +25,9 @@ extern void readNVS();
 extern void deserializeDataJson(String dados_recebidos);
 // configdata.h
 extern void configServerApSta();
-extern void serverEscutarCliente();
-extern bool verificarInfo();
+extern void loopServerConfig();
+extern void checkData();
+extern bool checkInfo();
 void a();
 
 typedef void(*pont_func)(void);
@@ -57,7 +58,7 @@ void setup() {
 
   if(!nvs) {
     configServerApSta();
-    pt = &serverEscutarCliente;
+    pt = &loopServerConfig;
   }
   else {
     WiFi.mode(WIFI_STA);

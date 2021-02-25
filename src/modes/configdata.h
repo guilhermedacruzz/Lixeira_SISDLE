@@ -2,8 +2,8 @@
 #define _CONFIGDATA_
 
 void configServerApSta();
-void serverEscutarCliente();
-bool verificarInfo();
+void loopServerConfig();
+bool checkInfo();
 
 extern void deserializeDataJson(String dados_recebidos);
 extern void writeNVS();
@@ -32,7 +32,7 @@ void configServerApSta() {
 bool checkData(String data) {
   deserializeDataJson(data);
 
-  bool status = verificarInfo();
+  bool status = checkInfo();
 
   Serial.println(status);
   if(status) {
@@ -49,9 +49,9 @@ bool checkData(String data) {
 }
 
 
-void serverEscutarCliente() {
+void loopServerConfig() {
   WiFiClient client = server.available();
-  bool iswrite = false;
+  bool configOk = false;
  
   if (client.connected() && webSocketServer.handshake(client)) {
 
@@ -63,7 +63,7 @@ void serverEscutarCliente() {
       data = webSocketServer.getData();
 
       if(data.length() > 0)
-        iswrite = checkData(data);
+        configOk = checkData(data);
     
       delay(10);
    }
@@ -72,7 +72,7 @@ void serverEscutarCliente() {
    delay(100);
   }
 
-  if(iswrite) {
+  if(configOk) {
     Serial.println("Escrevendo na NVS...");
     WiFi.disconnect();
     writeNVS();
@@ -80,7 +80,7 @@ void serverEscutarCliente() {
   }
 }
 
-bool verificarInfo() {
+bool checkInfo() {
 
   Serial.print("connectando em... ");
   Serial.println(data_config.ssid);
