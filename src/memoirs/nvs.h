@@ -35,15 +35,8 @@ void clearNVS() {
 void writeNVS() {
   preferences.begin("sisdle", false);
 
-  String ssid = data_config.ssid;
-  String pass = data_config.password;
-
-
-  Serial.println(ssid);
-  Serial.println(pass);
-
-  preferences.putString("id", ssid);
-  preferences.putString("password", pass);
+  preferences.putString("id", data_config.ssid);
+  preferences.putString("password", data_config.password);
 
   preferences.end();
 }
