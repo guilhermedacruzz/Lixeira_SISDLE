@@ -8,6 +8,7 @@
 #include "entities/data.h"
 #include "components/json.h"
 #include "modes/modeconfigdata.h"
+#include "modes/modesenddata.h"
 #include "components/button.h"
 #include "memoirs/nvs.h"
 
@@ -28,7 +29,10 @@ extern void configServerApSta();
 extern void loopServerConfig();
 extern void checkData();
 extern bool checkInfo();
-void a();
+// modessenddata.h
+extern void configStation();
+extern void reconnectWiFi();
+extern void funcLoopEnviarInfo();
 
 typedef void(*pont_func)(void);
 
@@ -61,9 +65,8 @@ void setup() {
     pt = &loopServerConfig;
   }
   else {
-    WiFi.mode(WIFI_STA);
-    Serial.println("já tem dados salvos");
-    pt = &a;
+    configStation();
+    pt = &loopSendInfo;
   }
 }
 
@@ -76,11 +79,7 @@ void loop() {
   if(checkButton()) {
     Serial.println("Resetando....");
     clearNVS();
+    WiFi.disconnect();
     ESP.restart();
   }
-}
-
-void a() {
-  Serial.println("Enviando....");
-  delay(1000);
 }
