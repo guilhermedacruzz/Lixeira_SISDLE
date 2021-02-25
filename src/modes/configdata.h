@@ -36,11 +36,14 @@ bool checkData(String data) {
 
   Serial.println(status);
   if(status) {
-    webSocketServer.sendData(data);
+    webSocketServer.sendData("ok");
   }
   else {
-    webSocketServer.sendData(data);
+    webSocketServer.sendData("erro");
   }
+
+  Serial.print("Dado recebido: ");
+  Serial.println(data);
 
   return status;
 }
@@ -59,11 +62,8 @@ void serverEscutarCliente() {
  
       data = webSocketServer.getData();
 
-      if(data.length() > 0) {
-        Serial.println("Dado recebido: ");
-        Serial.println(data);
+      if(data.length() > 0)
         iswrite = checkData(data);
-      }
     
       delay(10);
    }
@@ -101,7 +101,6 @@ bool verificarInfo() {
   }
 
   Serial.println("\nÉ possível concectar............");
-  WiFi.disconnect();
 
   return true;
 }
