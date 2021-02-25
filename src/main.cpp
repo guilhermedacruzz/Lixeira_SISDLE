@@ -7,7 +7,7 @@
 #include <ArduinoJson.h>
 #include "entities/data.h"
 #include "components/json.h"
-#include "modes/configdata.h"
+#include "modes/modeconfigdata.h"
 #include "components/button.h"
 #include "memoirs/nvs.h"
 
@@ -23,7 +23,7 @@ extern void writeNVS();
 extern void readNVS();
 // json.h
 extern void deserializeDataJson(String dados_recebidos);
-// configdata.h
+// modeconfigdata.h
 extern void configServerApSta();
 extern void loopServerConfig();
 extern void checkData();

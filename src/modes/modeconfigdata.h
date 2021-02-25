@@ -1,5 +1,5 @@
-#ifndef _CONFIGDATA_
-#define _CONFIGDATA_
+#ifndef _MODECONFIGDATA_
+#define _MODECONFIGDATA_
 
 void configServerApSta();
 void loopServerConfig();
