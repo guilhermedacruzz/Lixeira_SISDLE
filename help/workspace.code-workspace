@@ -1,0 +1,44 @@
+{
+	"folders": [
+		{
+			"path": "..\\..\\TesteWiFiManager"
+		},
+		{
+			"name": "TesteLed",
+			"path": "..\\..\\TesteLed"
+		},
+		{
+			"name": "TesteSTAAP",
+			"path": "..\\..\\TesteSTAAP"
+		},
+		{
+			"name": "TesteNVS",
+			"path": "..\\..\\TesteNVS"
+		},
+		{
+			"name": "Foi",
+			"path": "..\\..\\Foi"
+		},
+		{
+			"name": "TestePythonServer",
+			"path": "..\\..\\TestePythonServer"
+		},
+		{
+			"name": "Lixeira2",
+			"path": "..\\..\\Lixeira2"
+		},
+		{
+			"name": "Prototipo_Lixeira",
+			"path": "..\\..\\Prototipo_Lixeira"
+		},
+		{
+			"name": "Projeto_LIxeira_SISDLE",
+			"path": ".."
+		},
+		{
+			"name": "TesteServerASYNCSocket",
+			"path": "..\\..\\TesteServerASYNCSocket"
+		}
+	],
+	"settings": {}
+}

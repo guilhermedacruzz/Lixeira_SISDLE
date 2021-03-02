@@ -4,7 +4,9 @@
 #include <WiFiAP.h>
 #include <WebSocketServer.h>
 #include <Preferences.h>
+#include "Adafruit_VL53L0X.h"
 #include <ArduinoJson.h>
+#include "components/sensor.h"
 #include "entities/data.h"
 #include "memoirs/nvs.h"
 #include "components/json.h"
@@ -19,20 +21,12 @@ extern void startButton();
 extern void checkButton();
 // nvs.h
 extern bool hasDataStoredNVS();
-extern void clearNVS();
-extern void writeNVS();
-extern void readNVS();
-// json.h
-extern void deserializeDataJson(String dados_recebidos);
 // modeconfigdata.h
 extern void configServerApSta();
 extern void loopServerConfig();
-extern void checkData();
-extern bool checkInfo();
 // modessenddata.h
 extern void configStation();
-extern void reconnectWiFi();
-extern void funcLoopEnviarInfo();
+extern void loopSendInfo();
 
 typedef void(*pont_func)(void);
 
@@ -51,6 +45,7 @@ pont_func pt;
 Preferences preferences;
 WiFiServer server;
 WebSocketServer webSocketServer;
+Adafruit_VL53L0X lox = Adafruit_VL53L0X();
 
 // O setup roda apenas uma vez quando o programa inicia, parecido com o construtor em java...
 void setup() {

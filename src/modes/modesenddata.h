@@ -3,6 +3,9 @@
 
 extern void readNVS();
 extern void checkButton();
+extern void startSensor();
+extern int readSensor();
+extern float convertMMinPorcent(int distance);
 
 extern Data data_config;
 
@@ -17,6 +20,7 @@ void configStation() {
 
   WiFi.begin(data_config.ssid.c_str(), data_config.password.c_str());
 
+  startSensor();
   reconnectWiFi();
 }
 
@@ -36,8 +40,15 @@ void reconnectWiFi() {
 }
 
 void loopSendInfo() {
-  Serial.println("Enviando info.....");
   reconnectWiFi();
+
+
+  int distance = readSensor();
+  float porcent =  convertMMinPorcent(distance);
+
+  
+  Serial.printf("Distance: %d mm\n", distance);
+  Serial.printf("Porcent: %f %%\n", porcent);
   delay(1000);
 }
 
