@@ -41,8 +41,9 @@ void configServerApSta() {
       a[i] = '\0';
 
       Serial.println(a);
-      //deserializeDataJson(a);
+      deserializeDataJson(a);
 
+      configOk = true;
       request->send(200, "text/plain", "Hello");
   });
  
@@ -50,14 +51,15 @@ void configServerApSta() {
 }
 
 void loopServerConfig() {
-  /*
+  
   if(configOk) {
+    delay(2000);
     server.end();
     Serial.println("Escrevendo na NVS...");
     WiFi.disconnect();
     writeNVS();
     ESP.restart();
-  }*/
+  }
 }
 
 #endif

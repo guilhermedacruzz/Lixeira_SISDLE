@@ -18,7 +18,7 @@ void funcLoopEnviarInfo();
 void configStation() {
   readNVS();
   WiFi.mode(WIFI_STA);
-  WiFi.setAutoReconnect (true);
+  WiFi.setAutoReconnect(true);
 
   WiFi.begin(data_config.ssid.c_str(), data_config.password.c_str());
 
@@ -46,10 +46,8 @@ void loopSendInfo() {
   reconnectWiFi();
 
   int distance = readSensor();
-  float porcent =  convertMMinPorcent(distance);
 
   Serial.printf("Distance: %d mm\n", distance);
-  Serial.printf("Porcent: %f %%\n", porcent);
 
   getTimer();
   
