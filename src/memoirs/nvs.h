@@ -6,6 +6,7 @@
 
 // Prótótipos
 bool hasDataStoredNVS();
+bool hasAPIKEY();
 void clearNVS();
 void writeNVS();
 void readNVS();
@@ -23,6 +24,24 @@ bool hasDataStoredNVS() {
   preferences.end();
 
   return !ssid.compareTo("") == 0;
+}
+
+bool hasAPIKEY() {
+  preferences.begin("sisdle", false);
+
+  String apikey = preferences.getString("apikey");
+
+  preferences.end();
+
+  return !apikey.compareTo("") == 0;
+}
+
+void writeAPIKEY() {
+  preferences.begin("sisdle", false);
+
+  preferences.putString("apikey", data_config.apikey);
+
+  preferences.end();
 }
 
 // Limpa os dados da NVS
@@ -55,6 +74,7 @@ void readNVS() {
   data_config.password = preferences.getString("password");
   data_config.latitude = preferences.getString("latitude");
   data_config.longitude = preferences.getString("longitude");
+  data_config.apikey = preferences.getString("apikey");
 
   preferences.end();
 }

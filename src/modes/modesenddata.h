@@ -22,6 +22,7 @@ void configStation() {
   Serial.println(data_config.password);
   Serial.println(data_config.latitude);
   Serial.println(data_config.longitude);
+  Serial.println(data_config.apikey);
 
   WiFi.mode(WIFI_STA);
   WiFi.setAutoReconnect(true);

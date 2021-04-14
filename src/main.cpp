@@ -64,8 +64,16 @@ void setup() {
     pt = &loopServerConfig;
   }
   else {
-    configStation();
-    pt = &loopSendInfo;
+    bool isApi = hasAPIKEY();
+
+    if(isApi) {
+      configStation();
+      pt = &loopSendInfo;
+    }
+    else {
+      data_config.apikey = "assss";
+      writeAPIKEY();
+    }
   }
 }
 
