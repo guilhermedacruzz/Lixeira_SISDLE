@@ -1,5 +1,6 @@
 // Importes
 #include <Arduino.h>
+#include <string.h>
 #include <WiFi.h>
 #include <WiFiAP.h>
 #include <NTPClient.h>

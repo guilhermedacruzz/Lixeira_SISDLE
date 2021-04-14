@@ -1,3 +1,6 @@
+#include <iostream>
+#include <string>
+
 #ifndef _NVS_
 #define _NVS_
 
@@ -38,6 +41,9 @@ void writeNVS() {
   preferences.putString("id", data_config.ssid);
   preferences.putString("password", data_config.password);
 
+  preferences.putString("latitude", data_config.latitude);
+  preferences.putString("longitude", data_config.longitude);
+
   preferences.end();
 }
 
@@ -47,6 +53,8 @@ void readNVS() {
 
   data_config.ssid = preferences.getString("id");
   data_config.password = preferences.getString("password");
+  data_config.latitude = preferences.getString("latitude");
+  data_config.longitude = preferences.getString("longitude");
 
   preferences.end();
 }

@@ -18,8 +18,8 @@ void deserializeDataJson(String dados_recebidos) {
   String ssid = obj["ssid"];
   String pass = obj["password"];
 
-  float latitude = obj["latitude"];
-  float longitude = obj["longitude"];
+  String latitude = obj["latitude"];
+  String longitude = obj["longitude"];
 
   data_config.ssid = ssid;
   data_config.password = pass;

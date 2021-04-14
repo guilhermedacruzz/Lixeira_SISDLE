@@ -17,6 +17,12 @@ void funcLoopEnviarInfo();
 
 void configStation() {
   readNVS();
+
+  Serial.println(data_config.ssid);
+  Serial.println(data_config.password);
+  Serial.println(data_config.latitude);
+  Serial.println(data_config.longitude);
+
   WiFi.mode(WIFI_STA);
   WiFi.setAutoReconnect(true);
 

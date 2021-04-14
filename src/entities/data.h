@@ -6,8 +6,8 @@ typedef struct data
     String ssid;
     String password;
 
-    float latitude;
-    float longitude;
+    String latitude;
+    String longitude;
 } Data;
 
 #endif
