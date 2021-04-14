@@ -1,18 +1,14 @@
-import websocket
+import requests
 import time
 import json
 
+url = 'http://192.168.4.1/post?'
 dic = {
     "ssid":"2.4g Adalberto",
     "password":"qi2001to500"
 }
  
-ws = websocket.WebSocket()
-ws.connect("ws://192.168.4.1/")
+x = requests.post(url, json.dumps(dic))
 
-ws.send(json.dumps(dic))
+print(x.text)
 
-result = ws.recv()
-print(result)
-
-ws.close()

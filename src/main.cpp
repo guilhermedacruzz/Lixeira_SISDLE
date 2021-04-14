@@ -4,7 +4,7 @@
 #include <WiFiAP.h>
 #include <NTPClient.h>
 #include <WiFiUdp.h>
-#include <WebSocketServer.h>
+#include "ESPAsyncWebServer.h"
 #include <Preferences.h>
 #include "Adafruit_VL53L0X.h"
 #include <ArduinoJson.h>
@@ -46,8 +46,6 @@ pont_func pt;
 
 // Objetos
 Preferences preferences;
-WiFiServer server;
-WebSocketServer webSocketServer;
 Adafruit_VL53L0X lox = Adafruit_VL53L0X();
 WiFiUDP ntpUDP;
 NTPClient timeClient(ntpUDP, "a.st1.ntp.br", -3 * 3600, 60000);
