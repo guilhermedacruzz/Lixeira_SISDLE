@@ -16,6 +16,7 @@
 #include "components/json.h"
 #include "modes/modeconfigdata.h"
 #include "modes/modesenddata.h"
+#include "modes/modeapikey.h"
 #include "components/button.h"
 
 // Protótipos de Função 
@@ -31,6 +32,9 @@ extern void loopServerConfig();
 // modessenddata.h
 extern void configStation();
 extern void loopSendInfo();
+// modeapikey.h
+extern void configKey();
+extern void loopGetApikey();
 
 typedef void(*pont_func)(void);
 
@@ -71,8 +75,8 @@ void setup() {
       pt = &loopSendInfo;
     }
     else {
-      data_config.apikey = "assss";
-      writeAPIKEY();
+      configKey();
+      pt = &loopGetApikey;
     }
   }
 }
