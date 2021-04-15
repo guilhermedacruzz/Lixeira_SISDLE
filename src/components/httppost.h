@@ -22,7 +22,8 @@ String httpPost(String endpoint, String info) {
 
         } else{
         
-            Serial.print("Erro: ");
+            Serial.print("Erro: ");  
+            
             Serial.println(httpResponseCode);
         
         }

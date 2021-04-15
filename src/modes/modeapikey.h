@@ -33,6 +33,7 @@ void loopGetApikey() {
         writeAPIKEY();
         delay(2000);
         ESP.restart();
+        
     }
 
     reconnectWiFi();
