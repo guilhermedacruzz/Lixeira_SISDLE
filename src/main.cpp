@@ -1,9 +1,9 @@
 // Importes
 #include <Arduino.h>
-#include <string.h>
 #include <WiFi.h>
 #include <WiFiAP.h>
 #include <NTPClient.h>
+#include <HTTPClient.h>
 #include <WiFiUdp.h>
 #include "ESPAsyncWebServer.h"
 #include <Preferences.h>
@@ -11,6 +11,7 @@
 #include <ArduinoJson.h>
 #include "components/sensor.h"
 #include "entities/data.h"
+#include "components/httppost.h"
 #include "memoirs/ntp.h"
 #include "memoirs/nvs.h"
 #include "components/json.h"
@@ -26,6 +27,7 @@ extern void startButton();
 extern void checkButton();
 // nvs.h
 extern bool hasDataStoredNVS();
+extern bool hasAPIKEY();
 // modeconfigdata.h
 extern void configServerApSta();
 extern void loopServerConfig();

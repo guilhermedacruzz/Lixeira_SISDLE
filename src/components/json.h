@@ -27,4 +27,24 @@ void deserializeDataJson(String dados_recebidos) {
   data_config.longitude = longitude;
 }
 
+void dese(String dados_recebidos) {
+  DynamicJsonDocument doc(1024);
+
+  deserializeJson(doc, dados_recebidos);
+
+  JsonObject obj = doc.as<JsonObject>();
+
+  int apikey = obj["id"];
+  Serial.println(apikey);
+
+  data_config.apikey = "teste123";
+
+  /*    Versão Final
+  String apikey = obj["_id"];
+  Serial.println(apikey);
+
+  data_config.apikey = apikey;
+  */
+}
+
 #endif

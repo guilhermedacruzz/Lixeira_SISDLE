@@ -3,11 +3,15 @@
 
 extern void readNVS();
 extern void reconnect();
-
-extern Data data_config;
+extern String httpPost(String endpoint, String info);
 
 void loopGetApikey();
 void configKey();
+
+extern Data data_config;
+
+String endpoint = "http://jsonplaceholder.typicode.com/posts";
+String info = "Funciona garai";
 
 void configKey() {
     readNVS();
@@ -20,9 +24,20 @@ void configKey() {
 }
 
 void loopGetApikey() {
-    Serial.println("hkdhfhf");
+    
+    String response = httpPost(endpoint, info);
+    Serial.println(response);
+
+    if(!response.compareTo("") == 0) {
+        dese(response);
+        writeAPIKEY();
+        delay(2000);
+        ESP.restart();
+    }
 
     reconnectWiFi();
+
+    delay(1000);
 }
 
 

@@ -1,24 +1,25 @@
 #ifndef _HTTPPOST_
 #define _HTTPPOST_
 
-void sendInfo(String server, String info);
+String httpPost(String endpoint, String info);
 
-void sendInfo(String server, String info) {
+String httpPost(String endpoint, String info) {
+    String response = "";
     if(WiFi.status()== WL_CONNECTED){
   
         HTTPClient http;   
         
-        http.begin(server); 
+        http.begin(endpoint); 
         http.addHeader("Content-Type", "text/plain"); 
         
         int httpResponseCode = http.POST(info); 
         
         if(httpResponseCode>0) {
-            String response = http.getString();   
+            response = http.getString();   
         
             Serial.println(httpResponseCode); 
-            Serial.println(response);  
-        
+            //Serial.println(response);  
+
         } else{
         
             Serial.print("Erro: ");
@@ -30,6 +31,8 @@ void sendInfo(String server, String info) {
     } else {
         Serial.println("Sem conexão WiFi");   
     }
+
+    return response;
 }
 
 #endif
