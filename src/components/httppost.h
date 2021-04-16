@@ -18,7 +18,7 @@ String httpPost(String endpoint, String info) {
             response = http.getString();   
         
             Serial.println(httpResponseCode); 
-            //Serial.println(response);  
+            Serial.println(response);
 
         } else{
         
