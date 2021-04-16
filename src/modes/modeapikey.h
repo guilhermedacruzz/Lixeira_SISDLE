@@ -2,7 +2,7 @@
 #define _MODEAPIKEY_
 
 extern void readNVS();
-extern void reconnect();
+extern void reconnectWiFi();
 extern String httpPost(String endpoint, String info);
 
 void loopGetApikey();
@@ -24,7 +24,10 @@ void configKey() {
 }
 
 void loopGetApikey() {
+    reconnectWiFi();
     
+    String jsonData = createJsonData();
+    Serial.println(jsonData);
     String response = httpPost(endpoint, info);
     Serial.println(response);
 
@@ -35,8 +38,6 @@ void loopGetApikey() {
         ESP.restart();
         
     }
-
-    reconnectWiFi();
 
     delay(1000);
 }

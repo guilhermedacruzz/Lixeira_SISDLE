@@ -56,4 +56,38 @@ void dese(String dados_recebidos) {
   */
 }
 
+String createJsonData() {
+
+    String jsonData = "{";
+
+    jsonData.concat("\"local\":\"");
+    jsonData.concat(data_config.local);
+    jsonData.concat("\",");
+
+    jsonData.concat("\"description\":\"");
+    jsonData.concat(data_config.description);
+    jsonData.concat("\",");
+
+    jsonData.concat("\"distanceBottom\":");
+    jsonData.concat(data_config.distanceBottom);
+    jsonData.concat(",");
+
+    jsonData.concat("\"distanceCover\":");
+    jsonData.concat(data_config.distanceCover);
+    jsonData.concat(",");
+
+    jsonData.concat("\"latitude\":");
+    jsonData.concat(data_config.latitude);
+    jsonData.concat(",");
+
+    jsonData.concat("\"longitude\":");
+    jsonData.concat(data_config.longitude);
+
+    jsonData.concat("}");
+
+    Serial.println(jsonData);
+
+    return jsonData;
+}
+
 #endif
