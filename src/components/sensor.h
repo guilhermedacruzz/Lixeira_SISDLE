@@ -6,22 +6,31 @@ int readSensor();
 
 extern Adafruit_VL53L0X lox; // Objeto Sensor
 
+bool sensor_status = true;
+
 // Responsável por Inicializar o Sensor
 void startSensor() {
   if (!lox.begin()) { // tenta inicializar o sensor
     Serial.println(F("Falha ao Tentar Inicializar o Sensor"));
-    //                                  Pensar em algo************************************************
+    sensor_status = false;
   }
 }
 
 // Responsável por Ler as Distãncias e retorna-las
 int readSensor() {
-  VL53L0X_RangingMeasurementData_t measure; // variável que armazena a leitura
 
-  Serial.print("Reading... ");
-  lox.rangingTest(&measure, false); // faz a leitura
+  int result = -1;
 
-  return measure.RangeMilliMeter;
+  if(sensor_status) {
+    VL53L0X_RangingMeasurementData_t measure; // variável que armazena a leitura
+
+    Serial.print("Reading... ");
+    lox.rangingTest(&measure, false); // faz a leitura
+
+    result = measure.RangeMilliMeter;
+  }
+
+  return result;
 }
 
 #endif
