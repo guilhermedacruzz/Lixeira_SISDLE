@@ -13,10 +13,10 @@
 #include "entities/identifier.h"
 #include "entities/network.h"
 #include "entities/settings.h"
-//#include "components/sensor.h"
+#include "components/sensor.h"
 #include "components/httppost.h"
 #include "components/button.h"
-//#include "components/ntp.h"
+#include "components/ntp.h"
 #include "memoirs/nvs/nvs.h"
 #include "memoirs/nvs/nvsIdentifier.h"
 #include "memoirs/nvs/nvsNetwork.h"
@@ -24,8 +24,8 @@
 #include "components/json/createJson.h"
 #include "components/json/deserializeJson.h"
 #include "modes/modeconfigdata.h"
-//#include "modes/modesenddata.h"
 #include "modes/modeapikey.h"
+#include "modes/modesenddata.h"
 
 // Protótipos de Função 
 
@@ -82,7 +82,8 @@ void setup() {
       configKey();
       pt = &loopGetApikey;
     } else {
-      pt = &loopServerConfig;
+      configStation();
+      pt = &loopSendInfo;
     }
 
     /*

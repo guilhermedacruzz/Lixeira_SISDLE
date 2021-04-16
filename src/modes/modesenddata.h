@@ -1,57 +1,32 @@
 #ifndef _MODESENDDATA_
 #define _MODESENDDATA_
 
-extern void readNVS();
+extern void readNetwork();
 extern void checkButton();
 extern void startSensor();
 extern int readSensor();
-extern float convertMMinPorcent(int distance);
 extern void startTimer();
+extern String createJsonCapacityLog(int distance);
 extern void getTimer();
 
-extern Data data_config;
+extern void reconnectWiFi();
+extern Network network;
 
 void configStation();
-void reconnectWiFi();
-void funcLoopEnviarInfo();
+void loopSendInfo();
 
 void configStation() {
-  readNVS();
-
-  Serial.println(data_config.ssid);
-  Serial.println(data_config.password);
-  Serial.println(data_config.latitude);
-  Serial.println(data_config.longitude);
-  Serial.println(data_config.apikey);
-
-  Serial.println(data_config.local);
-  Serial.println(data_config.description);
-  Serial.println(data_config.distanceBottom);
-  Serial.println(data_config.distanceCover);
+  
+  readNetwork();
 
   WiFi.mode(WIFI_STA);
   WiFi.setAutoReconnect(true);
 
-  WiFi.begin(data_config.ssid.c_str(), data_config.password.c_str());
+  WiFi.begin(network.ssid.c_str(), network.password.c_str());
 
   startSensor();
   startTimer();
   reconnectWiFi();
-}
-
-void reconnectWiFi() {
-  if(WiFi.status() == WL_CONNECTED) 
-    return;
-
-  while (WiFi.status() != WL_CONNECTED) { 
-    delay(500);
-    checkButton();
-    Serial.println("Connectando a Rede WiFi..");
-    WiFi.reconnect();
-  }
-
-  Serial.println("Conectado!");
-  Serial.println(WiFi.localIP());
 }
 
 void loopSendInfo() {
@@ -59,7 +34,7 @@ void loopSendInfo() {
 
   int distance = readSensor();
 
-  String jsonData = createJsonData2(distance);
+  String jsonData = createJsonCapacityLog(distance);
   Serial.println(jsonData);
 
   getTimer();
