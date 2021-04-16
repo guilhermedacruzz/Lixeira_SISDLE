@@ -59,7 +59,8 @@ void loopSendInfo() {
 
   int distance = readSensor();
 
-  Serial.printf("Distance: %d mm\n", distance);
+  String jsonData = createJsonData2(distance);
+  Serial.println(jsonData);
 
   getTimer();
   

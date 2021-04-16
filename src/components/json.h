@@ -88,4 +88,20 @@ String createJsonData() {
     return jsonData;
 }
 
+String createJsonData2(int distance) {
+
+    String jsonData = "{";
+
+    jsonData.concat("\"_id\":\"");
+    jsonData.concat(data_config.apikey);
+    jsonData.concat("\",");
+
+    jsonData.concat("\"distance\":");
+    jsonData.concat(distance);
+
+    jsonData.concat("}");
+
+    return jsonData;
+}
+
 #endif

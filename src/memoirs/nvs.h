@@ -1,12 +1,8 @@
-#include <iostream>
-#include <string>
-
 #ifndef _NVS_
 #define _NVS_
 
 // Prótótipos
-bool hasDataStoredNVS();
-bool hasAPIKEY();
+bool hasConfigSave(const char* value);
 void clearNVS();
 void writeNVS();
 void readNVS();
@@ -15,25 +11,15 @@ void readNVS();
 extern Preferences preferences;
 extern Data data_config;
 
-// Verifica se existe alguma configuração salva na lixeira
-bool hasDataStoredNVS() {
+
+bool hasConfigSave(const char* value) {
   preferences.begin("sisdle", false);
 
-  String ssid = preferences.getString("id");
+  String result = preferences.getString(value);
 
   preferences.end();
 
-  return !ssid.compareTo("") == 0;
-}
-
-bool hasAPIKEY() {
-  preferences.begin("sisdle", false);
-
-  String apikey = preferences.getString("apikey");
-
-  preferences.end();
-
-  return !apikey.compareTo("") == 0;
+  return !result.compareTo("") == 0;
 }
 
 void writeAPIKEY() {

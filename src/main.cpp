@@ -26,8 +26,7 @@
 extern void startButton();
 extern void checkButton();
 // nvs.h
-extern bool hasDataStoredNVS();
-extern bool hasAPIKEY();
+extern bool hasConfigSave(const char* value);
 // modeconfigdata.h
 extern void configServerApSta();
 extern void loopServerConfig();
@@ -63,14 +62,14 @@ void setup() {
 
   startButton();  
 
-  bool nvs = hasDataStoredNVS();
+  bool nvs = hasConfigSave("id");
 
   if(!nvs) {
     configServerApSta();
     pt = &loopServerConfig;
   }
   else {
-    bool isApi = hasAPIKEY();
+    bool isApi = hasConfigSave("apikey");
 
     if(isApi) {
       configStation();
