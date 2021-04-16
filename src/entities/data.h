@@ -8,6 +8,10 @@ typedef struct data
     String password;
     String latitude;
     String longitude;
+    String local;
+    String description;
+    String distanceBottom;
+    String distanceCover;
 } Data;
 
 #endif

@@ -17,14 +17,23 @@ void deserializeDataJson(String dados_recebidos) {
 
   String ssid = obj["ssid"];
   String pass = obj["password"];
-
   String latitude = obj["latitude"];
   String longitude = obj["longitude"];
+
+  String local = obj["local"];
+  String description = obj["description"];
+  String distanceBottom = obj["distanceBottom"];
+  String distanceCover = obj["distanceCover"];
 
   data_config.ssid = ssid;
   data_config.password = pass;
   data_config.latitude = latitude;
   data_config.longitude = longitude;
+
+  data_config.local = local;
+  data_config.description = description;
+  data_config.distanceBottom = distanceBottom;
+  data_config.distanceCover = distanceCover;
 }
 
 void dese(String dados_recebidos) {
