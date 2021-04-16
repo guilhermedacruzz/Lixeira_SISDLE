@@ -11,7 +11,6 @@ void configKey();
 extern Data data_config;
 
 String endpoint = "http://jsonplaceholder.typicode.com/posts";
-String info = "Funciona garai";
 
 void configKey() {
     readNVS();
@@ -27,8 +26,7 @@ void loopGetApikey() {
     reconnectWiFi();
     
     String jsonData = createJsonData();
-    Serial.println(jsonData);
-    String response = httpPost(endpoint, info);
+    String response = httpPost(endpoint, jsonData);
     Serial.println(response);
 
     if(!response.compareTo("") == 0) {
@@ -36,7 +34,6 @@ void loopGetApikey() {
         writeAPIKEY();
         delay(2000);
         ESP.restart();
-        
     }
 
     delay(1000);

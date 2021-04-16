@@ -85,8 +85,6 @@ String createJsonData() {
 
     jsonData.concat("}");
 
-    Serial.println(jsonData);
-
     return jsonData;
 }
 
