@@ -9,11 +9,17 @@
 #include <Preferences.h>
 #include "Adafruit_VL53L0X.h"
 #include <ArduinoJson.h>
-#include "components/sensor.h"
 #include "entities/data.h"
+#include "entities/identifier.h"
+#include "entities/network.h"
+#include "entities/settings.h"
+#include "components/sensor.h"
 #include "components/httppost.h"
 #include "memoirs/ntp.h"
-#include "memoirs/nvs.h"
+#include "memoirs/nvs/nvs.h"
+#include "memoirs/nvs/nvsIdentifier.h"
+#include "memoirs/nvs/nvsNetwork.h"
+#include "memoirs/nvs/nvsSettings.h"
 #include "components/json.h"
 #include "modes/modeconfigdata.h"
 #include "modes/modesenddata.h"
@@ -48,6 +54,9 @@ const char* asecret = "12345678";
 
 // Dados de Configuração da Placa
 Data data_config;
+Network network;
+Settings settings;
+Identifier identifier;
 pont_func pt;
 
 // Objetos
