@@ -10,8 +10,8 @@ extern Network network;
 void writeNetwork() {
   preferences.begin("sisdle", false);
 
-  preferences.putString("apikey", network.ssid);
-  preferences.putString("apikey", network.password);
+  preferences.putString("id", network.ssid);
+  preferences.putString("password", network.password);
 
   preferences.end();
 }

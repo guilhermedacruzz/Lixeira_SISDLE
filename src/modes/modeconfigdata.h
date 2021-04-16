@@ -6,15 +6,14 @@ void loopServerConfig();
 bool checkInfo();
 
 extern void deserializeDataJson(String dados_recebidos);
-extern void writeNVS();
+extern void writeSettings();
+extern void writeNetwork();
 
 extern const char* assid;
 extern const char* asecret;
 
-extern Data data_config;
-
 AsyncWebServer server(80);
-bool configOk = false;
+bool status = false; 
 
 void configServerApSta() {
   Serial.println("Iniciando modo de configuração!");
@@ -34,16 +33,18 @@ void configServerApSta() {
     [](AsyncWebServerRequest * request, uint8_t *data, size_t len, size_t index, size_t total) {
       
       size_t i;
-      char a[len];
+      char mensage[len];
+
       for (i = 0; i < len; i++) {
-        a[i] = data[i];
+        mensage[i] = data[i];
       }
-      a[i] = '\0';
+      mensage[i] = '\0';
 
-      Serial.println(a);
-      deserializeDataJson(a);
+      Serial.println(mensage);
 
-      configOk = true;
+      deserializeDataJson(mensage);
+
+      status = true;
       request->send(200, "text/plain", "Hello");
   });
  
@@ -52,12 +53,16 @@ void configServerApSta() {
 
 void loopServerConfig() {
   
-  if(configOk) {
+  if(status) {    // Ver como reiniciar melhor
     delay(2000);
+
+    writeSettings();
+    writeNetwork();
+
     server.end();
-    Serial.println("Escrevendo na NVS...");
     WiFi.disconnect();
-    writeNVS();
+    
+    delay(500);
     ESP.restart();
   }
 }
