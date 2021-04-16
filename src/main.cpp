@@ -15,7 +15,7 @@
 #include "entities/settings.h"
 #include "components/sensor.h"
 #include "components/httppost.h"
-#include "memoirs/ntp.h"
+#include "components/ntp.h"
 #include "memoirs/nvs/nvs.h"
 #include "memoirs/nvs/nvsIdentifier.h"
 #include "memoirs/nvs/nvsNetwork.h"

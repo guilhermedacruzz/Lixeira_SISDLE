@@ -30,6 +30,7 @@ void readSettings() {
 
   settings.local = preferences.getString("local");
   settings.description = preferences.getString("description");
+  
   settings.distanceBottom = preferences.getString("distanceBottom");
   settings.distanceCover = preferences.getString("distanceCover");
 
