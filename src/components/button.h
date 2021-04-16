@@ -1,7 +1,7 @@
 #ifndef _BUTTON_
 #define _BUTTON_
 
-extern void clearnVS();
+extern void clearNVS();
 
 // Protótipos de Função 
 void startButton();

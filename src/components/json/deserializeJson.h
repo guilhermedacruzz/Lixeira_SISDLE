@@ -5,10 +5,10 @@ extern Identifier identifier;
 extern Settings settings;
 extern Network network;
 
-void deserializeDataJson(String dados_recebidos) {
+void deserializeDataJson(String data) {
   DynamicJsonDocument doc(1024);
 
-  deserializeJson(doc, dados_recebidos);
+  deserializeJson(doc, data);
 
   JsonObject obj = doc.as<JsonObject>();
 
@@ -33,10 +33,10 @@ void deserializeDataJson(String dados_recebidos) {
   settings.distanceCover = distanceCover;
 }
 
-void deserializeIdentifier(String dados_recebidos) {
+void deserializeIdentifier(String data) {
   DynamicJsonDocument doc(1024);
 
-  deserializeJson(doc, dados_recebidos);
+  deserializeJson(doc, data);
 
   JsonObject obj = doc.as<JsonObject>();
 

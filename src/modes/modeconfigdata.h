@@ -5,7 +5,7 @@ void configServerApSta();
 void loopServerConfig();
 bool checkInfo();
 
-extern void deserializeDataJson(String dados_recebidos);
+extern void deserializeDataJson(String data);
 extern void writeSettings();
 extern void writeNetwork();
 
