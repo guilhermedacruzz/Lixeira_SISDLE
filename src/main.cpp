@@ -62,7 +62,6 @@ NTPClient timeClient(ntpUDP, "a.st1.ntp.br", -3 * 3600, 60000);
 // O setup roda apenas uma vez quando o programa inicia, parecido com o construtor em java...
 void setup() {
   Serial.begin(115200);
-  
   startButton();  
   
   bool nvs = hasConfigSave("id");

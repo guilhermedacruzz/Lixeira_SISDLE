@@ -6,32 +6,23 @@ extern Settings settings;
 
 String createJsonData() {
 
-    String jsonData = "{";
 
-    jsonData.concat("\"local\":\"");
-    jsonData.concat(settings.local);
-    jsonData.concat("\",");
-
-    jsonData.concat("\"description\":\"");
-    jsonData.concat(settings.description);
-    jsonData.concat("\",");
-
-    jsonData.concat("\"distanceBottom\":");
-    jsonData.concat(settings.distanceBottom);
-    jsonData.concat(",");
-
-    jsonData.concat("\"distanceCover\":");
-    jsonData.concat(settings.distanceCover);
-    jsonData.concat(",");
-
-    jsonData.concat("\"latitude\":");
+    String jsonData = "{\"type\": \"Feature\", \"geometry\": {\"type\":\"Point\", \"coordinates\" : [";
     jsonData.concat(settings.latitude);
     jsonData.concat(",");
-
-    jsonData.concat("\"longitude\":");
     jsonData.concat(settings.longitude);
-
-    jsonData.concat("}");
+    jsonData.concat("] }, \"properties\": {");
+    jsonData.concat("\"location\":\"");
+    jsonData.concat(settings.local);
+    jsonData.concat("\", \"description\":\"");
+    jsonData.concat(settings.description);
+    jsonData.concat("\", \"capacity\":");
+    jsonData.concat(-420);
+    jsonData.concat(", \"distanceCover\":");
+    jsonData.concat(settings.distanceCover);
+    jsonData.concat(", \"distanceBottom\":");
+    jsonData.concat(settings.distanceBottom);
+    jsonData.concat("}}");
 
     return jsonData;
 }
@@ -40,7 +31,7 @@ String createJsonCapacityLog(int distance) {
 
     String jsonData = "{";
 
-    jsonData.concat("\"_id\":\"");
+    jsonData.concat("\"id\":\"");
     jsonData.concat(identifier.cod);
     jsonData.concat("\",");
 
