@@ -28,15 +28,15 @@
 #include "modes/modesenddata.h"
 
 // Protótipos de Função 
-
-// button.h
 extern void startButton();
 extern void checkButton();
-// nvs.h
 extern bool hasConfigSave(const char* value);
-// modeconfigdata.h
 extern void configServerApSta();
 extern void loopServerConfig();
+extern void configKey();
+extern void loopGetApikey();
+extern void configStation();
+extern void loopSendInfo();
 
 typedef void(*pont_func)(void);
 
@@ -62,10 +62,8 @@ NTPClient timeClient(ntpUDP, "a.st1.ntp.br", -3 * 3600, 60000);
 // O setup roda apenas uma vez quando o programa inicia, parecido com o construtor em java...
 void setup() {
   Serial.begin(115200);
-
   
   startButton();  
-
   
   bool nvs = hasConfigSave("id");
   Serial.println(nvs);
@@ -85,16 +83,6 @@ void setup() {
       configStation();
       pt = &loopSendInfo;
     }
-
-    /*
-    if(isApi) {
-      configStation();
-      pt = &loopSendInfo;
-    }
-    else {
-      configKey();
-      pt = &loopGetApikey;
-    }*/
   }
 }
 

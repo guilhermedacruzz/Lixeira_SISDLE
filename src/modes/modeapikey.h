@@ -28,6 +28,7 @@ void reconnectWiFi() {
 }
 
 void configKey() {
+    readSettings();
     readNetwork();
 
     WiFi.mode(WIFI_STA);
@@ -41,6 +42,7 @@ void loopGetApikey() {
     reconnectWiFi();
     
     String jsonData = createJsonData();
+    Serial.println(jsonData);
     String response = httpPost(endpoint, jsonData);
 
     if(!response.compareTo("") == 0) {

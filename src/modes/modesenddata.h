@@ -1,13 +1,13 @@
 #ifndef _MODESENDDATA_
 #define _MODESENDDATA_
 
+#define TIMER 0.01// Em horas
+
 extern void readNetwork();
 extern void checkButton();
 extern void startSensor();
 extern int readSensor();
-extern void startTimer();
 extern String createJsonCapacityLog(int distance);
-extern void getTimer();
 
 extern void reconnectWiFi();
 extern Network network;
@@ -18,6 +18,7 @@ void loopSendInfo();
 void configStation() {
   
   readNetwork();
+  readIdentifier();
 
   WiFi.mode(WIFI_STA);
   WiFi.setAutoReconnect(true);
@@ -25,7 +26,6 @@ void configStation() {
   WiFi.begin(network.ssid.c_str(), network.password.c_str());
 
   startSensor();
-  startTimer();
   reconnectWiFi();
 }
 
@@ -36,10 +36,15 @@ void loopSendInfo() {
 
   String jsonData = createJsonCapacityLog(distance);
   Serial.println(jsonData);
+  String response = httpPost(endpoint, jsonData);
 
-  getTimer();
-  
-  delay(1000);
+  int cont = 0;
+  while(cont <= TIMER * 3600) {
+    checkButton();
+    cont++;
+    delay(1000);
+    Serial.println(cont);
+  }
 }
 
 #endif
