@@ -10,7 +10,7 @@ void configKey();
 
 extern Network network;
 
-String endpoint = "http://jsonplaceholder.typicode.com/posts";
+const char* endpoint_create = "http://192.168.100.68:3000/lixeira?";
 
 void reconnectWiFi() {
   if(WiFi.status() == WL_CONNECTED) 
@@ -36,6 +36,8 @@ void configKey() {
     WiFi.begin(network.ssid.c_str(), network.password.c_str());
 
     reconnectWiFi();
+
+    delay(2000);
 }
 
 void loopGetApikey() {
@@ -43,17 +45,17 @@ void loopGetApikey() {
     
     String jsonData = createJsonData();
     Serial.println(jsonData);
-    String response = httpPost(endpoint, jsonData);
+    String response = httpPost(endpoint_create, jsonData);
 
     if(!response.compareTo("") == 0) {
         deserializeIdentifier(response);
         Serial.println(identifier.cod);
-        writeIdentifier();
+        //writeIdentifier();
         delay(2000);
-        ESP.restart();
+        //ESP.restart();
     }
 
-    delay(1000);
+    delay(2000);
 }
 
 

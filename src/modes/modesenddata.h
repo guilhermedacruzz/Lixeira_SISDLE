@@ -8,12 +8,13 @@ extern void checkButton();
 extern void startSensor();
 extern int readSensor();
 extern String createJsonCapacityLog(int distance);
-
 extern void reconnectWiFi();
-extern Network network;
 
 void configStation();
 void loopSendInfo();
+
+extern Network network;
+const char* endpoint_log = "http://jsonplaceholder.typicode.com/posts";
 
 void configStation() {
   
@@ -36,7 +37,7 @@ void loopSendInfo() {
 
   String jsonData = createJsonCapacityLog(distance);
   Serial.println(jsonData);
-  String response = httpPost(endpoint, jsonData);
+  String response = httpPost(endpoint_log, jsonData);
 
   int cont = 0;
   while(cont <= TIMER * 3600) {

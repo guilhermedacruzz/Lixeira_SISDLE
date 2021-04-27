@@ -10,7 +10,7 @@ String httpPost(String endpoint, String info) {
         HTTPClient http;   
         
         http.begin(endpoint); 
-        http.addHeader("Content-Type", "text/plain"); 
+        http.addHeader("Content-Type", "application/json"); 
         
         int httpResponseCode = http.POST(info); 
         
@@ -35,5 +35,4 @@ String httpPost(String endpoint, String info) {
 
     return response;
 }
-
 #endif

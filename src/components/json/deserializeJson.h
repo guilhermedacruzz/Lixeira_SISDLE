@@ -40,15 +40,9 @@ void deserializeIdentifier(String data) {
 
   JsonObject obj = doc.as<JsonObject>();
 
-  int cod = obj["id"];
-
-  identifier.cod = "teste123";
-
-  /*    Versão Final
-  String cod = obj["_id"];
+  String cod = obj["id"];
 
   identifier.cod = cod;
-  */
 }
 
 #endif

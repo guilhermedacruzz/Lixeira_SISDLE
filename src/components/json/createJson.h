@@ -6,7 +6,6 @@ extern Settings settings;
 
 String createJsonData() {
 
-
     String jsonData = "{\"type\": \"Feature\", \"geometry\": {\"type\":\"Point\", \"coordinates\" : [";
     jsonData.concat(settings.latitude);
     jsonData.concat(",");
