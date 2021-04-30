@@ -2,9 +2,7 @@
 #include <Arduino.h>
 #include <WiFi.h>
 #include <WiFiAP.h>
-#include <NTPClient.h>
 #include <HTTPClient.h>
-#include <WiFiUdp.h>
 #include "ESPAsyncWebServer.h"
 #include <Preferences.h>
 #include "Adafruit_VL53L0X.h"
@@ -16,7 +14,6 @@
 #include "components/sensor.h"
 #include "components/httppost.h"
 #include "components/button.h"
-#include "components/ntp.h"
 #include "memoirs/nvs/nvs.h"
 #include "memoirs/nvs/nvsIdentifier.h"
 #include "memoirs/nvs/nvsNetwork.h"
@@ -56,8 +53,6 @@ pont_func pt;
 // Objetos
 Preferences preferences;
 Adafruit_VL53L0X lox = Adafruit_VL53L0X();
-WiFiUDP ntpUDP;
-NTPClient timeClient(ntpUDP, "a.st1.ntp.br", -3 * 3600, 60000);
 
 // O setup roda apenas uma vez quando o programa inicia, parecido com o construtor em java...
 void setup() {
