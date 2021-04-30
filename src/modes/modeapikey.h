@@ -50,9 +50,9 @@ void loopGetApikey() {
     if(!response.compareTo("") == 0) {
         deserializeIdentifier(response);
         Serial.println(identifier.cod);
-        //writeIdentifier();
+        writeIdentifier();
         delay(2000);
-        //ESP.restart();
+        ESP.restart();
     }
 
     delay(2000);
