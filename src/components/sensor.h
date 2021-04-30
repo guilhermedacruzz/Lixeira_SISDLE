@@ -1,10 +1,12 @@
 #ifndef _SENSOR_
 #define _SENSOR_
 
+#include "Adafruit_VL53L0X.h"
+
 void startSensor();
 int readSensor();
 
-extern Adafruit_VL53L0X lox; // Objeto Sensor
+Adafruit_VL53L0X lox = Adafruit_VL53L0X();// Objeto Sensor
 
 bool sensor_status = true;
 
@@ -24,7 +26,6 @@ int readSensor() {
   if(sensor_status) {
     VL53L0X_RangingMeasurementData_t measure; // variável que armazena a leitura
 
-    Serial.print("Reading... ");
     lox.rangingTest(&measure, false); // faz a leitura
 
     result = measure.RangeMilliMeter;

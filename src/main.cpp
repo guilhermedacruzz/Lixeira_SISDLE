@@ -5,7 +5,6 @@
 #include <HTTPClient.h>
 #include "ESPAsyncWebServer.h"
 #include <Preferences.h>
-#include "Adafruit_VL53L0X.h"
 #include <ArduinoJson.h>
 
 #include "entities/identifier.h"
@@ -52,7 +51,6 @@ pont_func pt;
 
 // Objetos
 Preferences preferences;
-Adafruit_VL53L0X lox = Adafruit_VL53L0X();
 
 // O setup roda apenas uma vez quando o programa inicia, parecido com o construtor em java...
 void setup() {
@@ -60,15 +58,13 @@ void setup() {
   startButton();  
   
   bool nvs = hasConfigSave("id");
-  Serial.println(nvs);
   
   if(!nvs) {
     configServerApSta();
     pt = &loopServerConfig;
-  } else {
 
+  } else {
     bool isApi = hasConfigSave("apikey");
-    Serial.println(isApi);
 
     if(!isApi) {
       configKey();

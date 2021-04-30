@@ -19,18 +19,17 @@ void reconnectWiFi() {
   while (WiFi.status() != WL_CONNECTED) { 
     delay(500);
     checkButton();
-    Serial.println("Connectando a Rede WiFi..");
     WiFi.reconnect();
   }
-
-  Serial.println("Conectado!");
-  Serial.println(WiFi.localIP());
 }
 
 void configKey() {
+
+    Serial.println("Carregando informações da NVS.....");
     readSettings();
     readNetwork();
 
+    Serial.println("Iniciando o Wifi....");
     WiFi.mode(WIFI_STA);
     WiFi.setAutoReconnect(true);
     WiFi.begin(network.ssid.c_str(), network.password.c_str());
@@ -43,14 +42,23 @@ void configKey() {
 void loopGetApikey() {
     reconnectWiFi();
     
+    Serial.println("Enviando informações para a API..");
+    Serial.print("URL: ");
+    Serial.println(endpoint_create);
+
     String jsonData = createJsonData();
+    Serial.print("JSON: ");
     Serial.println(jsonData);
     String response = httpPost(endpoint_create, jsonData);
+    Serial.print("RESPOSTA: ");
+    Serial.println(response);
 
     if(!response.compareTo("") == 0) {
         deserializeIdentifier(response);
-        Serial.println(identifier.cod);
         writeIdentifier();
+
+        Serial.println("Identificador da lixeira gravado com sucesso!");
+        Serial.println("Reiniciando....");
         delay(2000);
         ESP.restart();
     }

@@ -18,7 +18,6 @@ void startButton() {
 // Verifica o estado do botão
 void checkButton() {
 	if(digitalRead(button_pin) == LOW) {
-		Serial.println("Resetando....");
 		clearNVS();
 		WiFi.disconnect();
 		ESP.restart();

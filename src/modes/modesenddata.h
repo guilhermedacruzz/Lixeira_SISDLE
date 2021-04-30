@@ -18,15 +18,19 @@ const char* endpoint_log = "http://jsonplaceholder.typicode.com/posts";
 
 void configStation() {
   
+  Serial.println("Carregando informações da NVS.....");
   readNetwork();
   readIdentifier();
 
+  Serial.println("Iniciando o sensor....");
+  startSensor();
+
+  Serial.println("Iniciando o Wifi....");
   WiFi.mode(WIFI_STA);
   WiFi.setAutoReconnect(true);
 
   WiFi.begin(network.ssid.c_str(), network.password.c_str());
 
-  startSensor();
   reconnectWiFi();
 }
 
@@ -34,11 +38,19 @@ void loopSendInfo() {
   reconnectWiFi();
 
   int distance = readSensor();
+  Serial.print("Leitura do Sensor: ");
+  Serial.print(distance);
+  Serial.println(" mm");
 
   String jsonData = createJsonCapacityLog(distance);
+  Serial.print("JSON: ");
   Serial.println(jsonData);
   String response = httpPost(endpoint_log, jsonData);
+  Serial.print("RESPOSTA: ");
+  Serial.println(response);
 
+
+  Serial.println("Timer: ");
   int cont = 0;
   while(cont <= TIMER * 3600) {
     checkButton();

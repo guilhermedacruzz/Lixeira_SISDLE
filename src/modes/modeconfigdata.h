@@ -22,9 +22,6 @@ void configServerApSta() {
   Serial.println("Criando ponto de acesso....");
   WiFi.softAP(assid,asecret);
 
-  Serial.print("Endereço IP:\t");
-  Serial.println(WiFi.softAPIP());
-
   server.on(
     "/hello",
     HTTP_POST,
@@ -47,7 +44,11 @@ void configServerApSta() {
       status = true;
       request->send(200, "text/plain", "Hello");
   });
- 
+
+
+  Serial.print("Iniciando server no ip: ");
+  Serial.println(WiFi.softAPIP());
+
   server.begin();
 }
 
@@ -56,12 +57,15 @@ void loopServerConfig() {
   if(status) {    // Ver como reiniciar melhor
     delay(2000);
 
+    Serial.println("Escrevendo as configurações na memória permanente.....");
     writeSettings();
     writeNetwork();
 
     server.end();
     WiFi.disconnect();
     
+    Serial.println("Configurações salvas com sucesso...");
+    Serial.println("Reiniciando....");
     delay(500);
     ESP.restart();
   }
