@@ -1,6 +1,8 @@
 #ifndef _MODECONFIGDATA_
 #define _MODECONFIGDATA_
 
+#include "ESPAsyncWebServer.h"
+
 void configServerApSta();
 void loopServerConfig();
 bool checkInfo();

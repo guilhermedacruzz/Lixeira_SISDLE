@@ -1,6 +1,8 @@
 #ifndef _HTTPPOST_
 #define _HTTPPOST_
 
+#include <HTTPClient.h>
+
 String httpPost(String endpoint, String info);
 
 String httpPost(String endpoint, String info) {

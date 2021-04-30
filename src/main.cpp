@@ -2,8 +2,6 @@
 #include <Arduino.h>
 #include <WiFi.h>
 #include <WiFiAP.h>
-#include <HTTPClient.h>
-#include "ESPAsyncWebServer.h"
 #include <Preferences.h>
 #include <ArduinoJson.h>
 
