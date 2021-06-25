@@ -19,7 +19,9 @@ void reconnectWiFi() {
   while (WiFi.status() != WL_CONNECTED) { 
     delay(500);
     checkButton();
+  // WiFi.disconnect();
     WiFi.reconnect();
+    Serial.println(WiFi.status());
   }
 }
 
@@ -29,7 +31,9 @@ void configKey() {
     readSettings();
     readNetwork();
 
+    delay(2000);
     Serial.println("Iniciando o Wifi....");
+    WiFi.disconnect();
     WiFi.mode(WIFI_STA);
     WiFi.setAutoReconnect(true);
     WiFi.begin(network.ssid.c_str(), network.password.c_str());

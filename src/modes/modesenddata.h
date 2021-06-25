@@ -26,9 +26,12 @@ void configStation() {
   startSensor();
 
   Serial.println("Iniciando o Wifi....");
+  WiFi.disconnect();
   WiFi.mode(WIFI_STA);
   WiFi.setAutoReconnect(true);
 
+  Serial.println(network.ssid.c_str());
+  Serial.println(network.password.c_str());
   WiFi.begin(network.ssid.c_str(), network.password.c_str());
 
   reconnectWiFi();
