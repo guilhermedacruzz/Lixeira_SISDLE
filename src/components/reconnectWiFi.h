@@ -1,8 +1,7 @@
 #ifndef _RECONNECTWIFI_
 #define _RECONNECTWIFI_
 
-extern const char* ssid;
-extern const char* password;
+extern Network network;
 
 void WiFiStationConnected(WiFiEvent_t event, WiFiEventInfo_t info);
 void WiFiGotIP(WiFiEvent_t event, WiFiEventInfo_t info);
@@ -13,17 +12,17 @@ void WiFiStationConnected(WiFiEvent_t event, WiFiEventInfo_t info){
 }
 
 void WiFiGotIP(WiFiEvent_t event, WiFiEventInfo_t info){
-  Serial.println("WiFi connected");
-  Serial.println("IP address: ");
+  Serial.println("Conectado ao WiFi");
+  Serial.println("IP: ");
   Serial.println(WiFi.localIP());
 }
 
 void WiFiStationDisconnected(WiFiEvent_t event, WiFiEventInfo_t info){
-  Serial.println("Disconnected from WiFi access point");
-  Serial.print("WiFi lost connection. Reason: ");
+  Serial.println("Desconectado....");
+  Serial.print("Conexão perdida Reason: ");
   Serial.println(info.disconnected.reason);
-  Serial.println("Trying to Reconnect");
-  WiFi.begin(ssid, password);
+  Serial.println("Aguarde Reconexão");
+  WiFi.begin(network.ssid.c_str(), network.password.c_str());
 }
 
 void connectWiFi() {
@@ -36,16 +35,11 @@ void connectWiFi() {
   WiFi.onEvent(WiFiGotIP, SYSTEM_EVENT_STA_GOT_IP);
   WiFi.onEvent(WiFiStationDisconnected, SYSTEM_EVENT_STA_DISCONNECTED);
 
-  /* Remove WiFi event
-  Serial.print("WiFi Event ID: ");
-  Serial.println(eventID);
-  WiFi.removeEvent(eventID);*/
-
-  WiFi.begin(ssid, password);
+  WiFi.begin(network.ssid.c_str(), network.password.c_str());
     
   Serial.println();
   Serial.println();
-  Serial.println("Wait for WiFi... ");
+  Serial.println("Aguarde pela conexão...");
 }
 
 #endif
