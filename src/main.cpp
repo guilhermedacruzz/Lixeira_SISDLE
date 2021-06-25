@@ -16,6 +16,7 @@
 #include "memoirs/nvs/nvsSettings.h"
 #include "components/json/createJson.h"
 #include "components/json/deserializeJson.h"
+#include "components/reconnectWiFi.h"
 #include "modes/modeconfigdata.h"
 #include "modes/modeapikey.h"
 #include "modes/modesenddata.h"
