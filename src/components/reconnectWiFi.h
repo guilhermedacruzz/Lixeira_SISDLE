@@ -3,6 +3,7 @@
 
 extern Network network;
 
+void connectWiFi();
 void WiFiStationConnected(WiFiEvent_t event, WiFiEventInfo_t info);
 void WiFiGotIP(WiFiEvent_t event, WiFiEventInfo_t info);
 void WiFiStationDisconnected(WiFiEvent_t event, WiFiEventInfo_t info);

@@ -3,12 +3,12 @@
 
 #define TIMER 0.01// Em horas
 
+extern void connectWiFi();
 extern void readNetwork();
 extern void checkButton();
 extern void startSensor();
 extern int readSensor();
 extern String createJsonCapacityLog(int distance);
-extern void reconnectWiFi();
 
 void configStation();
 void loopSendInfo();

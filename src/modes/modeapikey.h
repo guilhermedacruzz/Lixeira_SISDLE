@@ -1,6 +1,7 @@
 #ifndef _MODEAPIKEY_
 #define _MODEAPIKEY_
 
+extern void connectWiFi();
 extern void readNetwork();
 extern String httpPost(String endpoint, String info);
 extern String createJsonData();
