@@ -9,7 +9,7 @@ void WiFiGotIP(WiFiEvent_t event, WiFiEventInfo_t info);
 void WiFiStationDisconnected(WiFiEvent_t event, WiFiEventInfo_t info);
 
 void WiFiStationConnected(WiFiEvent_t event, WiFiEventInfo_t info){
-  Serial.println("Connected to AP successfully!");
+  Serial.println("Conectando ao WiFi!");
 }
 
 void WiFiGotIP(WiFiEvent_t event, WiFiEventInfo_t info){
@@ -37,9 +37,7 @@ void connectWiFi() {
   WiFi.onEvent(WiFiStationDisconnected, SYSTEM_EVENT_STA_DISCONNECTED);
 
   WiFi.begin(network.ssid.c_str(), network.password.c_str());
-    
-  Serial.println();
-  Serial.println();
+  
   Serial.println("Aguarde pela conexão...");
 }
 

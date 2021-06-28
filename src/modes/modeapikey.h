@@ -10,8 +10,7 @@ void loopGetApikey();
 void configKey();
 
 extern Network network;
-
-const char* endpoint_create = "http://192.168.100.68:3000/lixeira?";
+extern const char* endpoint_create;
 
 void configKey() {
 

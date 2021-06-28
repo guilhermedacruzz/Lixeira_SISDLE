@@ -14,7 +14,7 @@ void configStation();
 void loopSendInfo();
 
 extern Network network;
-const char* endpoint_log = "http://jsonplaceholder.typicode.com/posts";
+extern const char* endpoint_log;
 
 void configStation() {
   

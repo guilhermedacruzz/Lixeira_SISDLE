@@ -40,6 +40,8 @@ const int button_pin = 13;
 // Dados Rede Modo AP
 const char* assid = "Teste12345";
 const char* asecret = "12345678";
+const char* endpoint_create = "http://192.168.100.68:3000/lixeira?";
+const char* endpoint_log = "http://jsonplaceholder.typicode.com/posts";
 
 // Dados de Configuração da Placa
 Network network;
