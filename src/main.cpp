@@ -41,7 +41,7 @@ const int button_pin = 13;
 const char* assid = "Teste12345";
 const char* asecret = "12345678";
 const char* endpoint_create = "http://192.168.100.68:3000/lixeira?";
-const char* endpoint_log = "http://jsonplaceholder.typicode.com/posts";
+const char* endpoint_log = "http://192.168.100.68:3000/capacity?";
 
 // Dados de Configuração da Placa
 Network network;

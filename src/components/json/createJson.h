@@ -16,7 +16,7 @@ String createJsonData() {
     jsonData.concat("\", \"description\":\"");
     jsonData.concat(settings.description);
     jsonData.concat("\", \"capacity\":");
-    jsonData.concat(-420);
+    jsonData.concat(0);
     jsonData.concat(", \"distanceCover\":");
     jsonData.concat(settings.distanceCover);
     jsonData.concat(", \"distanceBottom\":");
@@ -30,11 +30,11 @@ String createJsonCapacityLog(int distance) {
 
     String jsonData = "{";
 
-    jsonData.concat("\"id\":\"");
+    jsonData.concat("\"lixeira\":\"");
     jsonData.concat(identifier.cod);
     jsonData.concat("\",");
 
-    jsonData.concat("\"distance\":");
+    jsonData.concat("\"capacity\":");
     jsonData.concat(distance);
 
     jsonData.concat("}");
