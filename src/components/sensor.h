@@ -28,6 +28,9 @@ int readSensor() {
 
     lox.rangingTest(&measure, false); // faz a leitura
 
+    if(measure.RangeStatus == 4)
+      return result;
+
     result = measure.RangeMilliMeter;
   }
 
