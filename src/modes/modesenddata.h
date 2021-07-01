@@ -9,6 +9,7 @@ extern void checkButton();
 extern void startSensor();
 extern int readSensor();
 extern String createJsonCapacityLog(int distance);
+extern int convertMM(int mm);
 
 void configStation();
 void loopSendInfo();
@@ -21,6 +22,7 @@ void configStation() {
   Serial.println("Carregando informações da NVS.....");
   readNetwork();
   readIdentifier();
+  readSettings();
 
   Serial.println("Iniciando o sensor....");
   startSensor();
@@ -36,7 +38,12 @@ void loopSendInfo() {
     Serial.print(distance);
     Serial.println(" mm");
 
-    String jsonData = createJsonCapacityLog(distance);
+    int porcent = convertMM(distance);
+    Serial.print("Porcentagem: ");
+    Serial.print(porcent);
+    Serial.println(" %");
+
+    String jsonData = createJsonCapacityLog(porcent);
     Serial.print("JSON: ");
     Serial.println(jsonData);
     String response = httpPost(endpoint_log, jsonData);

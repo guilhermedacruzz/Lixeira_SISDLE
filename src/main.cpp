@@ -17,6 +17,7 @@
 #include "components/json/createJson.h"
 #include "components/json/deserializeJson.h"
 #include "components/reconnectWiFi.h"
+#include "components/calculatePorc.h"
 #include "modes/modeconfigdata.h"
 #include "modes/modeapikey.h"
 #include "modes/modesenddata.h"
