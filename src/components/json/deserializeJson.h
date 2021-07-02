@@ -1,6 +1,10 @@
 #ifndef _DESERIALIZEJSON_
 #define _DESERIALIZEJSON_
 
+// Protótipos de Função 
+void deserializeDataJson(String data);
+void deserializeIdentifier(String data);
+
 extern Identifier identifier;
 extern Settings settings;
 extern Network network;

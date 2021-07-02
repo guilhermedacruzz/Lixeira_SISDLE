@@ -1,12 +1,13 @@
 #ifndef _RECONNECTWIFI_
 #define _RECONNECTWIFI_
 
-extern Network network;
-
+// Protótipos de Função 
 void connectWiFi();
 void WiFiStationConnected(WiFiEvent_t event, WiFiEventInfo_t info);
 void WiFiGotIP(WiFiEvent_t event, WiFiEventInfo_t info);
 void WiFiStationDisconnected(WiFiEvent_t event, WiFiEventInfo_t info);
+
+extern Network network;
 
 // Função disparada ao connectar ao WiFi
 void WiFiStationConnected(WiFiEvent_t event, WiFiEventInfo_t info){

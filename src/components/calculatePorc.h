@@ -1,6 +1,7 @@
 #ifndef _CALCULATEPORC_
 #define _CALCULATEPORC_
 
+// Protótipos de Função 
 int convertMM(int mm);
 
 extern Settings settings;

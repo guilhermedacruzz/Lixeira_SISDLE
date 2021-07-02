@@ -1,6 +1,7 @@
 #ifndef _NVSSETTINGS_
 #define _NVSSETTINGS_
 
+// Protótipos de Função 
 void writeSettings();
 void readSettings();
 

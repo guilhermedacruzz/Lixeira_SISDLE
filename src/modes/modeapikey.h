@@ -3,14 +3,14 @@
 
 //Nesse modo, a placa solicita um identificador para a API e salva na memória
 
+// Protótipos de Função 
+void loopGetApikey();
+void configKey();
 
 extern void connectWiFi();
 extern void readNetwork();
 extern String httpPost(String endpoint, String info);
 extern String createJsonData();
-
-void loopGetApikey();
-void configKey();
 
 extern Network network;
 extern const char* endpoint_create;

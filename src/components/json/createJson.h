@@ -1,9 +1,14 @@
 #ifndef _JSON_
 #define _JSON_
 
+// Protótipos de Função 
+String createJsonData();
+String createJsonCapacityLog(int distance);
+
 extern Identifier identifier;
 extern Settings settings;
 
+// Cria o json do patch de requisição do identificador
 String createJsonData() {
 
     String jsonData = "{\"type\": \"Feature\", \"geometry\": {\"type\":\"Point\", \"coordinates\" : [";
@@ -26,6 +31,7 @@ String createJsonData() {
     return jsonData;
 }
 
+// Cria o json das logs de capacidade
 String createJsonCapacityLog(int distance) {
 
     String jsonData = "{";

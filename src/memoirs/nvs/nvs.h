@@ -1,13 +1,14 @@
 #ifndef _NVS_
 #define _NVS_
 
-// Prótótipos
+// Protótipos de Função 
 bool hasConfigSave(const char* value);
 void clearNVS();
 
 // Extensões
 extern Preferences preferences;
 
+//Função que verifica se a algum valor salvo na memória NVS
 bool hasConfigSave(const char* value) {
   preferences.begin("sisdle", false);
 

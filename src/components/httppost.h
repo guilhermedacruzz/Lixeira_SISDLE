@@ -3,6 +3,7 @@
 
 #include <HTTPClient.h>
 
+// Protótipos de Função 
 String httpPost(String endpoint, String info);
 
 // Função por fazer o post http

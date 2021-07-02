@@ -1,6 +1,7 @@
 #ifndef _NVSIDENTIFIER_
 #define _NVSIDENTIFIER_
 
+// Protótipos de Função 
 void writeIdentifier();
 void readIdentifier();
 

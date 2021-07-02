@@ -1,6 +1,7 @@
 #ifndef _NVSNETWORK_
 #define _NVSNETWORK_
 
+// Protótipos de Função 
 void writeNetwork();
 void readNetwork();
 

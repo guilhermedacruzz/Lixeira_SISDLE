@@ -7,6 +7,7 @@
 
 #include "ESPAsyncWebServer.h"
 
+// Protótipos de Função 
 void configServerApSta();
 void loopServerConfig();
 bool checkInfo();

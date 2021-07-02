@@ -5,6 +5,10 @@
 
 #define TIMER 0.01// Em horas
 
+// Protótipos de Função 
+void configStation();
+void loopSendInfo();
+
 extern void connectWiFi();
 extern void readNetwork();
 extern void checkButton();
@@ -12,9 +16,6 @@ extern void startSensor();
 extern int readSensor();
 extern String createJsonCapacityLog(int distance);
 extern int convertMM(int mm);
-
-void configStation();
-void loopSendInfo();
 
 extern Network network;
 extern const char* endpoint_log;
