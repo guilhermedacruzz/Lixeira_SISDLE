@@ -5,6 +5,7 @@
 void writeIdentifier();
 void readIdentifier();
 
+// Extensões
 extern Preferences preferences;
 extern Identifier identifier;
 

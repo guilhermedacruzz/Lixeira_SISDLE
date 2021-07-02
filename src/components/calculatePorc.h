@@ -4,6 +4,7 @@
 // Protótipos de Função 
 int convertMM(int mm);
 
+// Extensões
 extern Settings settings;
 
 // Converte a leitura o sensor feita em mm

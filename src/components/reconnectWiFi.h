@@ -7,6 +7,7 @@ void WiFiStationConnected(WiFiEvent_t event, WiFiEventInfo_t info);
 void WiFiGotIP(WiFiEvent_t event, WiFiEventInfo_t info);
 void WiFiStationDisconnected(WiFiEvent_t event, WiFiEventInfo_t info);
 
+// Extensões
 extern Network network;
 
 // Função disparada ao connectar ao WiFi

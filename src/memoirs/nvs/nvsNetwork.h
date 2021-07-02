@@ -5,6 +5,7 @@
 void writeNetwork();
 void readNetwork();
 
+// Extensões
 extern Preferences preferences;
 extern Network network;
 

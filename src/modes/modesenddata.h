@@ -9,6 +9,7 @@
 void configStation();
 void loopSendInfo();
 
+// Extensões de Função 
 extern void connectWiFi();
 extern void readNetwork();
 extern void checkButton();
@@ -17,6 +18,7 @@ extern int readSensor();
 extern String createJsonCapacityLog(int distance);
 extern int convertMM(int mm);
 
+// Extensões
 extern Network network;
 extern const char* endpoint_log;
 

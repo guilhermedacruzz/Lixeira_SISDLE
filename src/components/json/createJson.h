@@ -5,6 +5,7 @@
 String createJsonData();
 String createJsonCapacityLog(int distance);
 
+// Extensões
 extern Identifier identifier;
 extern Settings settings;
 

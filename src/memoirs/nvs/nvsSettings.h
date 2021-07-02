@@ -5,6 +5,7 @@
 void writeSettings();
 void readSettings();
 
+// Extensões
 extern Preferences preferences;
 extern Settings settings;
 

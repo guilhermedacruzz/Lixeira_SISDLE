@@ -5,6 +5,7 @@
 void deserializeDataJson(String data);
 void deserializeIdentifier(String data);
 
+// Extensões
 extern Identifier identifier;
 extern Settings settings;
 extern Network network;

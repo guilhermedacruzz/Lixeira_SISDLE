@@ -7,11 +7,13 @@
 void loopGetApikey();
 void configKey();
 
+// Extensões de Função 
 extern void connectWiFi();
 extern void readNetwork();
 extern String httpPost(String endpoint, String info);
 extern String createJsonData();
 
+// Extensões
 extern Network network;
 extern const char* endpoint_create;
 

@@ -12,10 +12,12 @@ void configServerApSta();
 void loopServerConfig();
 bool checkInfo();
 
+// Extensões de Função 
 extern void deserializeDataJson(String data);
 extern void writeSettings();
 extern void writeNetwork();
 
+// Extensões
 extern const char* assid;
 extern const char* asecret;
 

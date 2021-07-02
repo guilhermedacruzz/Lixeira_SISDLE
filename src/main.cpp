@@ -22,7 +22,7 @@
 #include "modes/modeapikey.h"
 #include "modes/modesenddata.h"
 
-// Protótipos de Função 
+// Extensões de Função 
 extern void startButton();
 extern void checkButton();
 extern bool hasConfigSave(const char* value);
