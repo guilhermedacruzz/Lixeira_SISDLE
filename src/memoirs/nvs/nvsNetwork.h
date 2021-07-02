@@ -7,6 +7,7 @@ void readNetwork();
 extern Preferences preferences;
 extern Network network;
 
+// Escreve as configurações de WiFi na NVS
 void writeNetwork() {
   preferences.begin("sisdle", false);
 
@@ -16,6 +17,7 @@ void writeNetwork() {
   preferences.end();
 }
 
+// Lê as configurações de WiFi na NVS
 void readNetwork() {
   preferences.begin("sisdle", false);
 

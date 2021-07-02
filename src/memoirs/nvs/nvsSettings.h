@@ -7,6 +7,7 @@ void readSettings();
 extern Preferences preferences;
 extern Settings settings;
 
+// Escreve as configurações da lixeira na NVS
 void writeSettings() {
   preferences.begin("sisdle", false);
 
@@ -22,6 +23,7 @@ void writeSettings() {
   preferences.end();
 }
 
+// Lê as configurações da lixeira na NVS
 void readSettings() {
   preferences.begin("sisdle", false);
 

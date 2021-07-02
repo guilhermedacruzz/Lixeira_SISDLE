@@ -33,16 +33,16 @@ extern void loopGetApikey();
 extern void configStation();
 extern void loopSendInfo();
 
-typedef void(*pont_func)(void);
+typedef void(*pont_func)(void); // Ponteiro para a função que vai ser executada no loop
 
 // Pinos
-const int button_pin = 13;
+const int button_pin = 13; // Pino do botão
 
 // Dados Rede Modo AP
-const char* assid = "Teste12345";
-const char* asecret = "12345678";
-const char* endpoint_create = "http://192.168.100.68:3000/lixeira?";
-const char* endpoint_log = "http://192.168.100.68:3000/capacity?";
+const char* assid = "Teste12345"; // Nome da rede Wifi que a lixeira irá criar
+const char* asecret = "12345678"; // Senha da rede Wifi que a lixeira irá criar
+const char* endpoint_create = "http://192.168.100.68:3000/lixeira?"; // url do patch de criação da lixeira
+const char* endpoint_log = "http://192.168.100.68:3000/capacity?"; // url do post de logs da capacidade
 
 // Dados de Configuração da Placa
 Network network;
@@ -56,22 +56,23 @@ Preferences preferences;
 // O setup roda apenas uma vez quando o programa inicia, parecido com o construtor em java...
 void setup() {
   Serial.begin(115200);
-  startButton();  
+
+  startButton(); // Inicializa o Botão
   
-  bool nvs = hasConfigSave("id");
+  bool nvs = hasConfigSave("id"); // Verifica se tem alguma configuração de wifi, distância etc salva
   
   if(!nvs) {
-    configServerApSta();
-    pt = &loopServerConfig;
+    configServerApSta(); // Configura o server e o Wifi no mode de Acess Point
+    pt = &loopServerConfig; 
 
   } else {
-    bool isApi = hasConfigSave("apikey");
+    bool isApi = hasConfigSave("apikey"); // Verifica se a tem algum Identificador Salvo
 
     if(!isApi) {
-      configKey();
+      configKey(); // Configura o Wifi para pedir o identificador
       pt = &loopGetApikey;
     } else {
-      configStation();
+      configStation(); // Configura o Wifi No modo Station para enviar os dados do sensor.
       pt = &loopSendInfo;
     }
   }
@@ -83,6 +84,6 @@ void loop() {
   
   pt();
 
-  checkButton();
+  checkButton(); // Verifica se o botão de reset foi pressionado e reseta a lixeira
   
 }

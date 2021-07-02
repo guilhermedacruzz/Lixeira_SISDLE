@@ -5,6 +5,7 @@ extern Identifier identifier;
 extern Settings settings;
 extern Network network;
 
+// Deserializa a post http recebido pelo APP de configuração
 void deserializeDataJson(String data) {
   DynamicJsonDocument doc(1024);
 
@@ -33,6 +34,7 @@ void deserializeDataJson(String data) {
   settings.distanceCover = distanceCover;
 }
 
+// Deserializa a resposta do patch http de requisição do identificador
 void deserializeIdentifier(String data) {
   DynamicJsonDocument doc(1024);
 

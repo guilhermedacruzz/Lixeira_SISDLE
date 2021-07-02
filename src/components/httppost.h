@@ -5,6 +5,7 @@
 
 String httpPost(String endpoint, String info);
 
+// Função por fazer o post http
 String httpPost(String endpoint, String info) {
     String response = "";
     if(WiFi.status()== WL_CONNECTED){

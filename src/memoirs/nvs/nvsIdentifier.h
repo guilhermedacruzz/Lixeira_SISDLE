@@ -7,6 +7,7 @@ void readIdentifier();
 extern Preferences preferences;
 extern Identifier identifier;
 
+// Escreve o Identificador na NVS
 void writeIdentifier() {
   preferences.begin("sisdle", false);
 
@@ -15,6 +16,7 @@ void writeIdentifier() {
   preferences.end();
 }
 
+// Lê o Identificador salva na NVS
 void readIdentifier() {
   preferences.begin("sisdle", false);
 

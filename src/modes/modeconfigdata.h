@@ -1,6 +1,10 @@
 #ifndef _MODECONFIGDATA_
 #define _MODECONFIGDATA_
 
+// Ao iniciar a lixera cria um rede WiFi
+// Em seguida, o Usuário abre o aplicativo de configuração, preenche o formulário e clica em enviar.
+// A lixeira recebe esses dados e grava na memória.
+
 #include "ESPAsyncWebServer.h"
 
 void configServerApSta();
@@ -19,12 +23,13 @@ bool status = false;
 
 void configServerApSta() {
   Serial.println("Iniciando modo de configuração!");
-  WiFi.mode(WIFI_MODE_AP);
+  WiFi.mode(WIFI_MODE_AP); // Modifica o modo do WiFi para Access Point
 
   Serial.println("Criando ponto de acesso....");
   WiFi.softAP(assid,asecret);
 
-  server.on(
+  // Inicializa o server que recebe das configurações
+  server.on( 
     "/hello",
     HTTP_POST,
     [](AsyncWebServerRequest * request){},
@@ -39,8 +44,7 @@ void configServerApSta() {
       }
       mensage[i] = '\0';
 
-      Serial.println(mensage);
-
+      Serial.println(mensage); 
       deserializeDataJson(mensage);
 
       status = true;
@@ -56,20 +60,21 @@ void configServerApSta() {
 
 void loopServerConfig() {
   
-  if(status) {    // Ver como reiniciar melhor
+  if(status) {  // Verifica se recebeu alguma configuração
     delay(2000);
 
     Serial.println("Escrevendo as configurações na memória permanente.....");
+    // Escreve os dados na memória permanente
     writeSettings();
     writeNetwork();
 
-    server.end();
-    WiFi.disconnect();
+    server.end(); // Encerra o server
+    WiFi.disconnect(); // Fecha o WiFi
     
     Serial.println("Configurações salvas com sucesso...");
     Serial.println("Reiniciando....");
     delay(500);
-    ESP.restart();
+    ESP.restart(); // Reinicia
   }
 }
 
