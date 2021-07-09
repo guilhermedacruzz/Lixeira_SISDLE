@@ -60,7 +60,7 @@ void loopSendInfo() {
   // Após todo esse processo a lixeira entra em loop até o timer acabar e realizar tudo de novo
     Serial.println("Timer: ");
     int cont = 0;
-    while(cont <= 10) {
+    while(cont <= TIMER * 3600) {
       checkButton();
       cont++;
       delay(1000);
